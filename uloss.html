@@ -1,0 +1,513 @@
+﻿
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru-ru" lang="ru-ru" dir="ltr">
+	<head>
+	  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор потери напряжения в кабеле</title>
+	  <script src="https://vk.com/js/api/mobile_sdk.js"  type="text/javascript"></script>
+	  
+	<style type="text/css">
+	body {
+      font: 14px/18px Open Sans; 
+      line-height: 18px;
+      color: #000000; }
+
+	h1, h2, h3, h4, h5, h6 { font-family: Arial, Helvetica, sans-serif; }
+
+	h1 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h2 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h3 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h4 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h5 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h6 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	.ot-menu a {
+		
+		
+	}
+	.ot-menu a:hover {
+		
+	}
+
+.form-horizontal .control-label{width:250px; !important; }
+	.auto-style2 {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	.auto-style3 {
+		border: 1px solid #808080;
+	}
+	.auto-style4 {
+		text-align: left;
+		border-left: 1px solid #C0C0C0;
+		border-right-style: solid;
+		border-right-width: 1px;
+		border-top: 1px solid #C0C0C0;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+	}
+	.auto-style5 {
+		font-family: Arial, Helvetica, sans-serif;
+		text-align: left;
+		border-left: 1px solid #C0C0C0;
+		border-right-style: solid;
+		border-right-width: 1px;
+		border-top: 1px solid #C0C0C0;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+	}
+	.auto-style6 {
+		text-align: left;
+		border-left-color: #C0C0C0;
+		border-left-width: 1px;
+		border-right-width: 1px;
+		border-top-color: #C0C0C0;
+		border-top-width: 1px;
+		border-bottom-width: 1px;
+	}
+	.auto-style8 {
+		font-family: Arial, Helvetica, sans-serif;
+		text-align: left;
+	}
+	.auto-style9 {
+		text-align: left;
+	}
+	.auto-style10 {
+		text-align: center;
+	}
+	.auto-style11 {
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: bold;
+		background-color: #FFFF00;
+	}
+	.auto-style12 {
+		text-align: center;
+		border-left: 1px solid #C0C0C0;
+		border-right-style: solid;
+		border-right-width: 1px;
+		border-top: 1px solid #C0C0C0;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+	}
+	.auto-style13 {
+		font-family: Arial, Helvetica, sans-serif;
+		text-align: center;
+	}
+	.auto-style14 {
+		color: #FFFF00;
+	}
+	.auto-style15 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FFFF00;
+	font-weight: bold;
+	background-color: #FF0000;
+}
+.auto-style16 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FFFF00;
+	font-weight: bold;
+	background-color: #0000FF;
+}
+.auto-style17 {
+	color: #FF0000;
+}
+	</style>
+	
+<body style="background: rgb(234,255,215); background: linear-gradient(90deg, rgba(244,255,235,1) 0%, rgba(239,255,252,1) 52%, rgba(206,248,255,1) 100%);">
+<script language="javascript">
+            VK.init({
+              apiId: 51858291
+            });
+            </script>
+			
+	<div class="body-bg">
+			<div class="wrapper">
+				
+
+			<div class="section sectionMainbody">
+				<div class="container">
+					<div class="row">
+						<div class="main-page col-lg-9 col-lg-reset col-md-9 col-md-reset col-sm-9 col-sm-reset col-xs-12 col-xs-reset">
+				<div class="row ">
+					<div class="col-lg-12 col-lg-reset col-md-12 col-md-reset col-sm-12 col-sm-reset col-xs-12 col-xs-reset">
+			<div id="bd_results">
+			<div id="cf_res_ajax_loader"></div><div class="item-page" itemscope itemtype="http://schema.org/Article">
+	<meta itemprop="inLanguage" content="ru-RU" />
+							
+	
+		
+								<div itemprop="articleBody" class="article_smart">
+		<h1>Калькулятор расчета потерь напряжения в кабеле</h1>
+<p class="auto-style2"><strong>Потеря напряжения  в кабеле</strong>  - величина, равная разности между установившимися значениями действующего напряжения, измеренными в двух точках системы электроснабжения (по ГОСТ 23875-88).&nbsp;</p>
+									<div class="title_calc">
+<h5 class="auto-style17">Калькулятор позволяет выполнить расчет потерь напряжения на 
+<em>постоянном(</em><strong><em>cosφ=1; 
+1 фаза)</em></strong> и <em>переменном токе</em>. В полях где укзаны значения по 
+умолчанию поставьте свои значения.</h5>
+</div>
+<form name="electro" class="electro_t">
+    <table class="auto-style3" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td height="25" bgcolor="#434343" colspan="4" class="auto-style4">
+                <h2 class="auto-style13"><strong><script language="JavaScript">
+var elem=document.forms.electro.elements;
+function calcelectro(){
+    var znach;
+	
+	if (elem.power.value=="") {
+	znach = (+elem.voltag.value)*(+elem.tok.value)*(+elem.cosinus.value)
+	  if (elem.faz[0].checked) {elem.power.value=Math.round(10000*znach)/10000} else {elem.power.value=Math.round(10000*Math.pow(3, 0.5) * (+znach))/10000}
+	}
+	if (elem.tok.value=="") {
+	znach = (+elem.power.value)/((+elem.voltag.value)*(+elem.cosinus.value))
+	  if (elem.faz[0].checked) {elem.tok.value=Math.round(10000*znach)/10000} else {elem.tok.value=Math.round(10000*(+znach)/Math.pow(3, 0.5))/10000}
+	}
+		
+	var form = document.electro;
+	
+    var a = form.resistunits.selectedIndex; //материал
+	var resistunitsvalue = form.resistunits.options[a].value;
+	
+	var s = form.area.selectedIndex; //сечение
+	var areavalue = form.area.options[s].value;
+	
+	var Precision=6;
+	var l = form.length.value; //длина
+	var p = form.power.value; //мощность
+	var j = form.tok.value //ток
+	var u = form.voltag.value; //напряжение
+	var f = form.cosinus.value; //косинус
+	var t = form.t.value; //температура
+	var q = (p * Math.pow((1 - Math.pow(f, 2)), 0.5)) / f; //реактивная мощность
+	var x = "";
+	var sm = "";
+	var sa = "";
+	{
+	if (areavalue == 0.034400) x = 0.000133, sm = 11, sa = 6; //акт. сопр., реакт. сопр., макс. ток медь/алюминий
+	if (areavalue == 0.025800) x = 0.000123, sm = 15, sa = 9;
+	if (areavalue == 0.017200) x = 0.000114, sm = 18, sa = 11;
+	if (areavalue == 0.011467) x = 0.000107, sm = 23, sa = 14;
+	if (areavalue == 0.006880) x = 0.000099, sm = 40, sa = 24;
+	if (areavalue == 0.004300) x = 0.000098, sm = 50, sa = 32;
+	if (areavalue == 0.002867) x = 0.000093, sm = 65, sa = 39;
+	if (areavalue == 0.001720) x = 0.000087, sm = 90, sa = 60;
+	if (areavalue == 0.001075) x = 0.000082, sm = 120, sa = 75;
+	if (areavalue == 0.000688) x = 0.000081, sm = 160, sa = 105;
+	if (areavalue == 0.000491) x = 0.000078, sm = 190, sa = 130;
+	if (areavalue == 0.000344) x = 0.000077, sm = 235, sa = 165;
+	if (areavalue == 0.000246) x = 0.000075, sm = 290, sa = 210;
+	if (areavalue == 0.000181) x = 0.000074, sm = 330, sa = 255;
+	if (areavalue == 0.000143) x = 0.000072, sm = 385, sa = 295;
+	}
+	var tks = "";
+	{
+	if (resistunitsvalue == 1) tks = 0.00428;
+	if (resistunitsvalue == 1.58) tks = 0.0038;
+	}
+	var rl = areavalue * l * resistunitsvalue * (1 + (tks * (t - 20))); //акт. сопр. провода
+	var rq = x * l; //реакт. сопр. провода
+		
+	if ((f > 1) || (isNaN(f)))
+  {
+    alert('Коэффициент мощности не может быть больше 1.');
+    return(0);
+  }
+  
+  if ((Math.pow(u, 2) / (2 * rl)) < p)
+  {
+    alert('Максимальная мощность в данном случае, с учётом сопротивления кабеля не может превышать ' + (Math.round(Math.pow(u, 2) / (2 * rl))) + ' Вт.');
+    return(0);
+  }
+
+var k = "";
+if (document.electro.faz[1].checked==true) {
+		k = "1" }
+    else {
+		k = "2" }
+    
+var result = k*(((p * rl) + (q * rq)) /u);
+var result_1 = result / (u / 100);
+var t = u / rl;
+var ukl = u - result;
+
+form.result.value = result.toPrecision(Precision);
+form.result_1.value = result_1.toPrecision(Precision);
+form.rl.value = rl.toPrecision(Precision);
+form.kvar.value = q.toPrecision(Precision);
+form.ukl.value = ukl.toPrecision(Precision);
+return true;
+}
+
+function usPower(){
+	if (elem.parRas[0].checked==true) {
+		elem.tok.value=""; elem.tok.disabled=1; elem.power.disabled=0
+	} 
+	else {
+		elem.power.value=""; elem.power.disabled=1; elem.tok.disabled=0
+	}
+}
+
+function insvoltag()
+{
+	usPower()
+	if (document.electro.faz[1].checked==true)
+		document.electro.voltag.value = "380" 
+    else
+		document.electro.voltag.value = "220"; 
+}	
+
+                </script> <a name="electro"></a> <span class="auto-style14">Расчёт потерь напряжения в кабеле</font></span></strong></h2>
+                </td>
+            </tr>
+            
+            <tr>
+                <td width="370" height="25" class="auto-style4">
+                <p style="margin-left: 40px" class="auto-style2"><strong>Длина линии (м) / Материал кабеля:</strong></p>
+                </td>
+                <td height="25" class="auto-style4">
+                <p class="auto-style9"><strong>
+				<input type="text" value="100" name="length" maxlength="10" size="10" class="auto-style2" /></strong></p>
+                </td>
+                <td height="25" colspan="2" class="auto-style4">
+                <p class="auto-style10"><strong>
+				<select name="resistunits" class="auto-style2">
+                <option value="1">Медь</option>
+                <option value="1.58">Алюминий</option>
+                </select></strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td height="25" class="auto-style4">
+                <p style="margin-left: 40px" class="auto-style2"><strong>Сечение кабеля (мм&sup2;):</strong></p>
+                </td>
+                <td height="25" class="auto-style4">
+                <p><strong><select name="area" class="auto-style2">
+                <option value="0.034400">0,5 мм&sup2;</option>
+                <option value="0.025800">0,75 мм&sup2;</option>
+                <option value="0.017200">1,0 мм&sup2;</option>
+                <option value="0.011467">1,5 мм&sup2;</option>
+                <option selected="" value="0.006880">2,5 мм&sup2;</option>
+                <option value="0.004300">4,0 мм&sup2;</option>
+                <option value="0.002867">6,0 мм&sup2;</option>
+                <option value="0.001720">10,0 мм&sup2;</option>
+                <option value="0.001075">16,0 мм&sup2;</option>
+                <option value="0.000688">25,0 мм&sup2;</option>
+                <option value="0.000491">35,0 мм&sup2;</option>
+                <option value="0.000344">50,0 мм&sup2;</option>
+                <option value="0.000246">70,0 мм&sup2;</option>
+                <option value="0.000181">95,0 мм&sup2;</option>
+                <option value="0.000143">120 мм&sup2;</option>
+                <option value="0.0000573">300 мм&sup2;</option>
+                </select></strong></p>
+                </td>
+                <td height="25" colspan="2" class="auto-style4">
+                <p class="auto-style8">&nbsp;</p>
+                </td>
+            </tr>
+            <tr>
+                <td height="25" class="auto-style4">
+                <p style="margin-left: 40px" class="auto-style2"><strong>Мощность нагрузки (Вт) или ток (А):</strong></p>
+                </td>
+                <td height="25" class="auto-style4">
+                <p class="auto-style9"><strong>
+				<input type="text" oninput="usPower()" value="1000" name="power" maxlength="10" size="10" class="auto-style2" /></strong></p>
+                </td>
+                <td height="25" colspan="2" class="auto-style4">
+                <p class="auto-style10"><strong>
+				<input type="text" oninput="usPower()" name="tok" maxlength="10" size="10" class="auto-style2" /></strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td height="25" class="auto-style4">
+                <p style="margin-left: 40px" class="auto-style2"><strong>Напряжение сети (В):</strong></p>
+                </td>
+                <td height="25" class="auto-style4">
+                <p class="auto-style9"><strong>
+				<input type="text" oninput="usPower()" value="220" name="voltag" maxlength="10" size="10" class="auto-style2" /></strong></p>
+                </td>
+                <td height="25" class="auto-style4">
+                <p class="auto-style9"><strong>
+				<input type="radio" checked="" onchange="usPower()" name="parRas" class="auto-style2" /></strong><span class="auto-style2"><strong>Мощность</strong></span></p>
+                </td>
+                <td height="25" style="border-style:none;" class="auto-style6">
+                <p class="auto-style9"><strong>
+				<input type="radio" checked="" onchange="insvoltag()" name="faz" class="auto-style2" /></strong><span class="auto-style2"><strong>1 фаза</strong></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td height="25" class="auto-style4">
+                <p style="margin-left: 40px" class="auto-style2"><strong>Коэффициент мощности (cos&phi;):</strong></p>
+                </td>
+                <td height="25" class="auto-style4">
+                <p class="auto-style9"><strong>
+				<input type="text" oninput="usPower()" value="0.92" name="cosinus" maxlength="10" size="10" class="auto-style2" /></strong></p>
+                </td>
+                <td height="25" class="auto-style4">
+                <p class="auto-style9"><strong>
+				<input type="radio" onchange="usPower()" name="parRas" class="auto-style2" /></strong><span class="auto-style2"><strong>Ток</strong></span></p>
+                </td>
+                <td height="25" style="border-style:none;" class="auto-style6">
+                <p class="auto-style9"><strong>
+				<input type="radio" onchange="insvoltag()" name="faz" class="auto-style2" /></strong><span class="auto-style2"><strong>3 фазы</strong></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td height="25" class="auto-style4">
+                <p style="margin-left: 40px" class="auto-style2"><strong>Температура кабеля&nbsp;(&deg;C):</strong></p>
+                </td>
+                <td height="25" class="auto-style4">
+                <p class="auto-style9"><strong>
+				<input type="text" value="35.00" name="t" maxlength="10" size="10" class="auto-style2" /></strong></p>
+                </td>
+                <td height="25" colspan="2" class="auto-style5">&nbsp;</td>
+            </tr>
+           
+            <tr>
+                <td class="auto-style4" style="height: 25px">
+                <p style="margin-left: 40px" class="auto-style2"><strong>Потери напряжения (В / %):</strong></p>
+                </td>
+                <td class="auto-style4" style="height: 25px">
+                <p class="auto-style9"><strong>
+				<input type="text" name="result" value="" maxlength="10" size="10" class="auto-style11" readonly/></strong></p>
+                </td>
+                <td colspan="2" class="auto-style4" style="height: 25px">
+                <p class="auto-style10"><strong>
+				<input type="text" name="result_1" value="" maxlength="10" size="10" class="auto-style11" readonly/></strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td height="25" class="auto-style4">
+                <p style="margin-left: 40px" class="auto-style2"><strong>Сопротивление провода&nbsp;(ом):</strong></p>
+                </td>
+                <td height="25" class="auto-style4">
+                <p class="auto-style9"><strong>
+				<input type="text" name="rl" value="" maxlength="10" size="10" class="auto-style11" readonly/></strong></p>
+                </td>
+                <td height="25" colspan="2" class="auto-style5">&nbsp;</td>
+            </tr>
+            <tr>
+                <td height="25" class="auto-style4">
+                <p style="margin-left: 40px" class="auto-style2"><strong>Реактивная мощность&nbsp;(ВАр):</strong></p>
+                </td>
+                <td height="25" class="auto-style4">
+                <p class="auto-style9"><strong>
+				<input type="text" name="kvar" value="" maxlength="10" size="10" class="auto-style11" readonly/></strong></p>
+                </td>
+                <td height="25" colspan="2" class="auto-style5">&nbsp;</td>
+            </tr>
+            <tr>
+                <td height="25" class="auto-style4">
+                <p style="margin-left: 40px" class="auto-style2"><strong>Напряжение на нагрузке (В):</strong></p>
+                </td>
+                <td class="auto-style4"><strong>
+				<input type="text" name="ukl" value="" maxlength="10" size="10" class="auto-style11" readonly/></strong></td>
+                <td colspan="2" class="auto-style5">&nbsp;</td>
+            </tr>
+           
+            <tr>
+                <td height="35" colspan="4" class="auto-style12">
+                <p class="auto-style9"><strong>
+				<input class="auto-style15" type="button" onclick="calcelectro(this.form)" value="Расчёт" />&nbsp;<input class="auto-style16" type="reset" value="&nbsp;Сброс&nbsp;" /></strong></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+<p class="auto-style2">&nbsp;</p>
+<p class="auto-style2">*Формат ввода - х.хх (разделитель - точка)</p>
+
+<p class="auto-style2">Для расчёта потерь линейного напряжения <strong>U=380 В; 3 фазы.</strong></p>
+<p class="auto-style2">Для расчёта потерь фазного напряжения <strong>U=220 В; 1 фаза.</strong></p>
+<p class="auto-style2">Для постоянного тока&nbsp; <strong>cos&phi;=1; 1 фаза.</strong></p>
+<p><span class="auto-style2"><strong>P</strong> - активная мощность передаваемая по линии, Вт;</span><br class="auto-style2" />
+<span class="auto-style2">
+<strong>Q</strong> - реактивная мощность передаваемая по линии, ВАр;</span><br class="auto-style2" />
+<span class="auto-style2">
+<strong>R</strong> - удельное активное сопротивление кабельной линии, Ом/м;</span><br class="auto-style2" />
+<span class="auto-style2">
+<strong>X</strong> - удельное индуктивное сопротивление кабельной линии, Ом/м;</span><br class="auto-style2" />
+<span class="auto-style2">
+<strong>L</strong> - длина кабельной линии, м;</span><br class="auto-style2" />
+<span class="auto-style2">
+<strong>Uл</strong> - линейное напряжение сети, В;</span><br class="auto-style2" />
+<span class="auto-style2">
+<strong>Uф</strong> - фазное напряжение сети, В.&nbsp;</span></p>
+									<p>&nbsp;</p>
+									<h1><span lang="en-us">Методика расчета:</span>
+									</h1>
+<table class="table_blur5">
+    <tbody>
+        <tr>
+            <td style="text-align: center">
+			<img class="auto-style2" width="298" height="80" alt="Потери напряжения в трёхфазной линии" src="uloss3f.jpg" /></td>
+            <td style="text-align: center">
+			<img class="auto-style2" width="298" height="80" alt="Потери напряжения в однофазной линии" src="uloss2f.jpg" /></td>
+        </tr>
+        <tr>
+            <td style="text-align: center" class="auto-style2">Рис.1</td>
+            <td style="text-align: center" class="auto-style2">Рис.2</td>
+        </tr>
+    </tbody>
+</table>
+<div class="title_calc">
+<p class="title_calc"><span class="auto-style2">При равенстве сопротивлений 
+</span> <strong><span class="auto-style2">Zп</span><span style="font-size:smaller;" class="auto-style2">1</span><span class="auto-style2">=Zп</span><span style="font-size:smaller;" class="auto-style2">2</span><span class="auto-style2">=Zп</span><span style="font-size:smaller;" class="auto-style2">3</span><span class="auto-style2"> и Zн</span><span style="font-size:smaller;" class="auto-style2">1</span><span class="auto-style2">=Zн</span><span style="font-size:smaller;" class="auto-style2">2</span><span class="auto-style2">=Zн</span><span style="font-size:smaller;" class="auto-style2">3</span></strong><span class="auto-style2"> ток в нулевом проводе отсутствует (Рис.1), поэтому для трёхфазных линий потери напряжения рассчитываются для одного проводника.</span></p>
+<p class="title_calc"><span class="auto-style2">В двух- и однофазных линиях, а также в цепи постоянного тока, ток идёт по двум проводникам (Рис.2), поэтому вводится коэффициент 2 (при условии равенства 
+</span> <strong><span class="auto-style2">Zп</span><span style="font-size:smaller;" class="auto-style2">1</span><span class="auto-style2">=Zп</span><span style="font-size:smaller;" class="auto-style2">2</span></strong><span class="auto-style2">).</span></p>
+
+<p class="auto-style2">Расчёт потерь линейного (между фазами) напряжения в кабеле при трёхфазном переменном токе&nbsp; производится по формулам:</p>
+
+<p class="auto-style2"><strong>&Delta;U(в)=(PRL+QXL)/Uл; &Delta;U(%)=(100(PRL+QXL))/                                       Uл&sup2;</strong> или (если известен ток)</p>
+<p class="title_calc"><span class="auto-style2"><strong>&Delta;U(в)=&radic;3&middot;I(R&middot;cos&phi;&middot;L+X&middot;sin&phi;&middot;L); &Delta;U(%)=(100&radic;3&middot;I(R&middot;cos&phi;&middot;L+X&middot;sin&phi;&middot;L))/                                       Uл</strong></span>
+<span class="auto-style2"> <strong>,</strong> где:</span></p>
+<p class="auto-style2"><strong>Q=  Uл&middot;I&middot;sin&phi;</strong></p>
+
+<p class="auto-style2">Расчёт потерь фазного (между фазой и нулевым проводом) напряжения в кабеле производится по формулам:</p>
+
+<p class="auto-style2"><strong>&Delta;U(в)=2&middot;(PRL+QXL)/Uф;&nbsp;                                        &Delta;U(%)=2&middot;(100(PRL+QXL))/                                       Uф&sup2;</strong>  или (если известен ток)</p>
+<p class="auto-style2"><strong>&Delta;U(в)=2&middot;I(R&middot;cos&phi;&middot;L+X&middot;sin&phi;&middot;L);&nbsp;                                        &Delta;U(%)=2&middot;(100&middot;I(R&middot;cos&phi;&middot;L+X&middot;sin&phi;&middot;L))/Uф,</strong> где:&nbsp;</p>
+<p class="auto-style2"><strong>Q=  Uф&middot;I&middot;sin&phi;</strong></p>
+
+</div>
+	</div>
+
+	
+	
+						 </div>
+						</div>
+					</div>
+				</div>
+			</div>
+					</div>
+				</div>
+			</div>
+			
+			</div>
+
+	</div>
+</body>
+</html>
