@@ -1,0 +1,234 @@
+﻿
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru-ru" lang="ru-ru" dir="ltr">
+	<head>
+	  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор номиналов сопротивления DIP и SMD резисторов</title>
+	  <script src="https://vk.com/js/api/mobile_sdk.js"  type="text/javascript"></script>
+	  
+	<style type="text/css">
+	body {
+      font: 14px/18px Open Sans; 
+      line-height: 18px;
+      color: #000000; }
+
+	h1, h2, h3, h4, h5, h6 { font-family: Arial, Helvetica, sans-serif; }
+
+	h1 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h2 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h3 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h4 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h5 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h6 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	.ot-menu a {
+		
+		
+	}
+	.ot-menu a:hover {
+		
+	}
+
+.form-horizontal .control-label{width:250px; !important; }
+	.auto-style2 {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	.auto-style3 {
+		border: 1px solid #808080;
+	}
+	.auto-style4 {
+		text-align: left;
+		border-left: 1px solid #C0C0C0;
+		border-right-style: solid;
+		border-right-width: 1px;
+		border-top: 1px solid #C0C0C0;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+	}
+	.auto-style5 {
+		font-family: Arial, Helvetica, sans-serif;
+		text-align: left;
+		border-left: 1px solid #C0C0C0;
+		border-right-style: solid;
+		border-right-width: 1px;
+		border-top: 1px solid #C0C0C0;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+	}
+	.auto-style6 {
+		text-align: left;
+		border-left-color: #C0C0C0;
+		border-left-width: 1px;
+		border-right-width: 1px;
+		border-top-color: #C0C0C0;
+		border-top-width: 1px;
+		border-bottom-width: 1px;
+	}
+	.auto-style8 {
+		font-family: Arial, Helvetica, sans-serif;
+		text-align: left;
+	}
+	.auto-style9 {
+		text-align: left;
+	}
+	.auto-style10 {
+		text-align: center;
+	}
+	.auto-style11 {
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: bold;
+		background-color: #FFFF00;
+	}
+	.auto-style12 {
+		text-align: center;
+		border-left: 1px solid #C0C0C0;
+		border-right-style: solid;
+		border-right-width: 1px;
+		border-top: 1px solid #C0C0C0;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+	}
+	.auto-style13 {
+		font-family: Arial, Helvetica, sans-serif;
+		text-align: center;
+	}
+	.auto-style14 {
+		color: #FFFF00;
+	}
+	.auto-style15 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FFFF00;
+	font-weight: bold;
+	background-color: #FF0000;
+}
+.auto-style16 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FFFF00;
+	font-weight: bold;
+	background-color: #0000FF;
+}
+.auto-style17 {
+	color: #FF0000;
+}
+	</style>
+	
+<body style="background: rgb(234,255,215); background: linear-gradient(90deg, rgba(244,255,235,1) 0%, rgba(239,255,252,1) 52%, rgba(206,248,255,1) 100%);">
+<script language="javascript">
+            VK.init({
+              apiId: 51858291
+            });
+            </script>
+			
+	 <main class="w3-container">
+
+<div class="description">
+	 
+	<h2>Онлайн-калькулятор маркировки цветных резисторов</h2>
+	<hr>
+	<p>Из за миниатюрных размеров маломощных резисторов и для облегчения читаемости была введена цветная маркировка резисторов, нанесенная на них в виде 3, 4 или 5 полос (колец). Для использования калькулятора, резистор необходимо положить таким образом, чтобы ближайшая к выводу резистора полоса располагаласть слева или расположить слева самую широкую полосу, которая при определения номинала всегда является первой.</p> 
+	<p>Номинал сопротивления всегда определяется по первым трем полосам. Первые две полосы маркировки - это цифры, а третья - множитель. Четвертое кольцо показывает допустимую погрешность точности сопротивления от номинального значения резистора.</p>
+	<p>Резисторы с точностью до 20 % маркируют тремя кольцами, с точностью 10 % и 5 % - четырьмя, для всех остальных более точных применяют маркировку пятью или шестью кольцами.</p>
+	<p>Для определения номинала резистора при помощи нашего онлайн-калькулятора, необходимо выбрать цвета всех колец - программа автоматически определит и покажет номинал.</p>
+</div>
+
+<div class="app">
+	<div id="info_div">
+		<div class="w3-half" id="bandSwitch">
+			<h3 id="bandSwitchText" style="text-transform: uppercase;font-weight: bold;">↔ 4 кольца</h3>
+		</div>
+		
+		<div class="w3-half" id="erg_div">
+			<h3 id="erg" class="w3-center"></h3>
+		</div>
+	</div>
+
+	<canvas id="myCanvas2" style="border:1px solid #c3c3c3;">
+	Ваш браузер не поддерживает canvas элементы.
+	</canvas>
+	
+	<table id="main_table">
+		<tr>
+			<th class="five_band" id="b_1">Кольцо 1</th>
+			<th id="b_2">Кольцо 1</th>
+			<th id="b_3">Кольцо 2</th>
+			<th id="mul">Множитель</th>
+			<th id="tol">Допуск в %</th>
+		</tr>
+		
+
+	</table>
+	
+	<div style="clear: both; padding-top: 10px;">
+	    
+	<h2>Онлайн-калькулятор маркировки SMD резисторов</h2>
+	<hr>
+	<p>Представляем простой и удобный калькулятор сопротивлений SMD резисторов. Чтобы узнать номинал своего резистора, введите его код в черное поле:</p>
+    <div id="smd_calculator" class="formsmd">
+    <input class="smd-valor" type="text" name="code" placeholder="" onfocus="this.placeholder = '473'" id="smd_pt" maxlength="4">
+    <div class="resistor" id="Valor">10kΩ ± 5%</div></div>
+    
+    <p>Наш калькулятор позволяет определять сопротивление SMD резисторов, маркированных по стандарту EIA-96, по которому на корпус наносится 3 или 4 цифры, либо 2 цифры и 1 буква.</p>
+    <h3>Обозначения маркировок SMD резисторов</h3>
+    <hr>
+    <p>При использовании маркировки с тремя или четырьмя цифрами, первые 2 или 3 из которых обозначают количественное значение сопротивления резистора, а последняя - показатель множителя. Множитель равен степени, в которую необходимо возвести количество, чтобы получить итоговый номинал.</p>
+    
+    <p>Приведем нескольлко примеров определения номинала SMD резистора, исходя из его маркировки:</p>
+    
+    <ul>
+    <li><strong>473</strong> = 47kΩ ± 5%</li>
+    <li><strong>103</strong> = 10kΩ ± 5%</li>
+    <li><strong>312</strong> = 3.1kΩ ± 5%</li>
+    <li><strong>106</strong> = 10MΩ ± 5%</li>
+    </ul>
+    
+    <p>При маркировке сопротивлений менее 10Ω используется Буква <strong>R</strong>. Она указывает на положене десятичной точки деления:</p>
+    
+    <ul>
+    <li><strong>0R5</strong> = 0.5Ω</li>
+    <li><strong>0R3</strong> = 0.3Ω</li>
+    <li><strong>0R7</strong> = 0.7kΩ</li>
+    </ul>
+    
+    <p>У высокоточных резисторов, показатель погрешности которых составляет 1%, буква ставится в конце номинала и является множителем. Две цифры в начале обозначают код, по которому определяется сопротивление:</p>
+    
+    <ul>
+    <li><strong>92Z</strong> = 0.89Ω ± 1%</li>
+    <li><strong>32D</strong> = 210kΩ ± 1%</li>
+    <li><strong>24E</strong> = 1.74MΩ ± 1%</li>
+    </ul>
+	 
+	</ul>
+	</div>
+	</p>
+</div>
+</main>
+<script src="jquery.min.js"></script>
+<script src="rcanvas.js"></script>
+<script src="resistor2.js"></script>
+<script src="smd-calc.js"></script>
+</body>
+</html>
