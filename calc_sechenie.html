@@ -54,86 +54,12 @@
 	}
 
 .form-horizontal .control-label{width:250px; !important; }
-	.auto-style2 {
-		font-family: Arial, Helvetica, sans-serif;
-	}
-	.auto-style3 {
-		border: 1px solid #808080;
-	}
-	.auto-style4 {
-		text-align: left;
-		border-left: 1px solid #C0C0C0;
-		border-right-style: solid;
-		border-right-width: 1px;
-		border-top: 1px solid #C0C0C0;
-		border-bottom-style: solid;
-		border-bottom-width: 1px;
-	}
-	.auto-style5 {
-		font-family: Arial, Helvetica, sans-serif;
-		text-align: left;
-		border-left: 1px solid #C0C0C0;
-		border-right-style: solid;
-		border-right-width: 1px;
-		border-top: 1px solid #C0C0C0;
-		border-bottom-style: solid;
-		border-bottom-width: 1px;
-	}
-	.auto-style6 {
-		text-align: left;
-		border-left-color: #C0C0C0;
-		border-left-width: 1px;
-		border-right-width: 1px;
-		border-top-color: #C0C0C0;
-		border-top-width: 1px;
-		border-bottom-width: 1px;
-	}
-	.auto-style8 {
-		font-family: Arial, Helvetica, sans-serif;
-		text-align: left;
-	}
-	.auto-style9 {
-		text-align: left;
-	}
-	.auto-style10 {
-		text-align: center;
-	}
-	.auto-style11 {
-		font-family: Arial, Helvetica, sans-serif;
-		font-weight: bold;
+	.auto-style18 {
 		background-color: #FFFF00;
 	}
-	.auto-style12 {
-		text-align: center;
-		border-left: 1px solid #C0C0C0;
-		border-right-style: solid;
-		border-right-width: 1px;
-		border-top: 1px solid #C0C0C0;
-		border-bottom-style: solid;
-		border-bottom-width: 1px;
+	.auto-style19 {
+		color: #FF0000;
 	}
-	.auto-style13 {
-		font-family: Arial, Helvetica, sans-serif;
-		text-align: center;
-	}
-	.auto-style14 {
-		color: #FFFF00;
-	}
-	.auto-style15 {
-	font-family: Arial, Helvetica, sans-serif;
-	color: #FFFF00;
-	font-weight: bold;
-	background-color: #FF0000;
-}
-.auto-style16 {
-	font-family: Arial, Helvetica, sans-serif;
-	color: #FFFF00;
-	font-weight: bold;
-	background-color: #0000FF;
-}
-.auto-style17 {
-	color: #FF0000;
-}
 	</style>
 	
 <body style="background: rgb(234,255,215); background: linear-gradient(90deg, rgba(244,255,235,1) 0%, rgba(239,255,252,1) 52%, rgba(206,248,255,1) 100%);">
@@ -156,7 +82,7 @@
 								<tr>
 									<td width="290">Введите мощность:</td>
 									<td>
-									<input class="areainputs" id="P" size="10" type="text" /> 
+									<input class="auto-style18" id="P" size="10" type="text" /> 
 									кВт </td>
 								</tr>
 								<tr>
@@ -188,7 +114,7 @@
 								<tr>
 									<td>Введите длину кабельной линии:</td>
 									<td>
-									<input class="areainputs" id="L" size="10" type="text" /> м
+									<input class="auto-style18" id="L" size="10" type="text" /> м
 									<input id="par" value="1" type="hidden" />
 									</td>
 								</tr>
@@ -222,9 +148,9 @@
 									<p>
 									<button id="calc_button" class="btn btn-primary" type="button" onclick="calculate();document.getElementById('nadpis').style.display='block';" >Рассчитать
 									</button></p>
-									<div id="nadpis" style="display: none;">
-										<p><strong>Расчет оценочный</strong>
-										</p>
+									<div id="nadpis" style="display: none;"><p>
+										<span class="auto-style18">Расчет оценочный</span></strong></span>
+									</p>
 									</div>
 									</td>
 								</tr>
@@ -314,7 +240,7 @@
 					</table>
 					<p>Этот расчет основан на методике описанной в пособии Козлова В.Н. и Карпова Ф.Ф. на странице 134. Его найти можно в интернете.</p>
 					<p>Внимание! Полученные значения нельзя считать в качестве окончательного варианта, в каждом конкретном случае необходим расчет квалифицированного специалиста, с замером сечений жил применяемой кабельно-проводниковой продукции.</p>
-					<h2"></div>
+					<h2>
 			</div>
 		</div>
 	</div>
