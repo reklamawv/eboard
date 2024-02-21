@@ -1,0 +1,324 @@
+
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru-ru" lang="ru-ru" dir="ltr">
+	<head>
+	  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор потери напряжения в кабеле</title>
+	  <script src="https://vk.com/js/api/mobile_sdk.js"  type="text/javascript"></script>
+	  
+	<style type="text/css">
+	body {
+      font: 14px/18px Open Sans; 
+      line-height: 18px;
+      color: #000000; }
+
+	h1, h2, h3, h4, h5, h6 { font-family: Arial, Helvetica, sans-serif; }
+
+	h1 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h2 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h3 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h4 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h5 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h6 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	.ot-menu a {
+		
+		
+	}
+	.ot-menu a:hover {
+		
+	}
+
+.form-horizontal .control-label{width:250px; !important; }
+	.auto-style2 {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	.auto-style3 {
+		border: 1px solid #808080;
+	}
+	.auto-style4 {
+		text-align: left;
+		border-left: 1px solid #C0C0C0;
+		border-right-style: solid;
+		border-right-width: 1px;
+		border-top: 1px solid #C0C0C0;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+	}
+	.auto-style5 {
+		font-family: Arial, Helvetica, sans-serif;
+		text-align: left;
+		border-left: 1px solid #C0C0C0;
+		border-right-style: solid;
+		border-right-width: 1px;
+		border-top: 1px solid #C0C0C0;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+	}
+	.auto-style6 {
+		text-align: left;
+		border-left-color: #C0C0C0;
+		border-left-width: 1px;
+		border-right-width: 1px;
+		border-top-color: #C0C0C0;
+		border-top-width: 1px;
+		border-bottom-width: 1px;
+	}
+	.auto-style8 {
+		font-family: Arial, Helvetica, sans-serif;
+		text-align: left;
+	}
+	.auto-style9 {
+		text-align: left;
+	}
+	.auto-style10 {
+		text-align: center;
+	}
+	.auto-style11 {
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: bold;
+		background-color: #FFFF00;
+	}
+	.auto-style12 {
+		text-align: center;
+		border-left: 1px solid #C0C0C0;
+		border-right-style: solid;
+		border-right-width: 1px;
+		border-top: 1px solid #C0C0C0;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+	}
+	.auto-style13 {
+		font-family: Arial, Helvetica, sans-serif;
+		text-align: center;
+	}
+	.auto-style14 {
+		color: #FFFF00;
+	}
+	.auto-style15 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FFFF00;
+	font-weight: bold;
+	background-color: #FF0000;
+}
+.auto-style16 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FFFF00;
+	font-weight: bold;
+	background-color: #0000FF;
+}
+.auto-style17 {
+	color: #FF0000;
+}
+	</style>
+	
+<body style="background: rgb(234,255,215); background: linear-gradient(90deg, rgba(244,255,235,1) 0%, rgba(239,255,252,1) 52%, rgba(206,248,255,1) 100%);">
+<script language="javascript">
+            VK.init({
+              apiId: 51858291
+            });
+            </script>
+			
+<script src="scalculator.js"></script>
+	<div class="navbar navbar-inverse navbar-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<div class="col-sm-12 col-md-8 content">
+					<h1>Расчет сечения по мощности</h1>
+					<p>С помощью этого калькулятора можно рассчитать требуемое сечение провода или кабеля по току или заданной мощности:</p>
+					<div class="calculator__cable__plugin1">
+						<table>
+							<tbody>
+								<tr>
+									<td width="290">Введите мощность:</td>
+									<td>
+									<input class="areainputs" id="P" size="10" type="text" /> 
+									кВт </td>
+								</tr>
+								<tr>
+									<td>Выберите номинальное напряжение:</td>
+									<td><select id="U">
+									<option value="0.22">220 B</option>
+									<option value="0.38">380 B</option>
+									<option value="0.66">660 B</option>
+									<option value="6">6 kB</option>
+									<option value="10">10 kB</option>
+									</select> </td>
+								</tr>
+								<tr>
+									<td>Укажите число фаз:</td>
+									<td><select id="faza">
+									<option value="1">1</option>
+									<option value="3">3</option>
+									</select> </td>
+								</tr>
+								<tr>
+									<td>Выберите материал жилы:</td>
+									<td><select id="gamma">
+									<option value="Al">Алюминий (Al)</option>
+									<option value="Cu">Медь (Cu)</option>
+									</select>
+									<input id="dU" value="5" type="hidden" />
+									</td>
+								</tr>
+								<tr>
+									<td>Введите длину кабельной линии:</td>
+									<td>
+									<input class="areainputs" id="L" size="10" type="text" /> м
+									<input id="par" value="1" type="hidden" />
+									</td>
+								</tr>
+								<tr>
+									<td>Укажите тип линии:</td>
+									<td><select id="lepn">
+									<option value="0">Не определено</option>
+									<option value="4">до 1 kB</option>
+									<option value="10">6 kB</option>
+									<option value="16">10 kB</option>
+									</select> </td>
+								</tr>
+								<tr>
+									<td colspan="2"><hr><b>Результаты вычисления:</b>
+									</td>
+								</tr>
+								<tr>
+									<td>Расчетное сечение жилы мм<sup>2 </sup>:</td>
+									<td>
+									<input id="S" disabled="disabled" maxlength="3" size="15" type="text" />
+									</td>
+								</tr>
+								<tr>
+									<td>Рекомендуемое сечение мм<sup>2 </sup>:</td>
+									<td>
+									<input id="Sv" disabled="disabled" maxlength="3" size="15" type="text" />
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+									<p>
+									<button id="calc_button" class="btn btn-primary" type="button" onclick="calculate();document.getElementById('nadpis').style.display='block';" >Рассчитать
+									</button></p>
+									<div id="nadpis" style="display: none;">
+										<p><strong>Расчет оценочный</strong>
+										</p>
+									</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<br>
+					<p>Данный расчет можно применять, не учитывая индуктивность сопротивления кабельной линии на потерю напряжения, (допустимая потеря напряжения в данном калькуляторе взята из расчёта 5%, что является нормой по ГОСТ 13109-97) если выполняются нижеописанные условия:</p>
+					<ul>
+						<li>Коэффициент мощности косинус фи (cos φ) = 1 (для линии сети переменного тока)</li>
+						<li>Линии сети постоянного тока</li>
+						<li>Сети (переменного тока с частотой 50 Гц), выполненные проводниками, если их сечения не превосходят указанных в следующей таблице:</li>
+					</ul>
+					<p>Максимальные значения сечений кабельно-проводниковой продукции, для которой допустимо делать расчет на потерю напряжения</p>
+					<table class="table">
+						<tbody>
+							<tr bgcolor="#f9f9f9">
+								<td height="33" width="116">Коэффициент мощности</td>
+								<td colspan="2">0.95</td>
+								<td colspan="2">0.90</td>
+								<td colspan="2">0.85</td>
+								<td colspan="2">0.80</td>
+								<td colspan="2">0.75</td>
+								<td colspan="2">0.70</td>
+							</tr>
+							<tr>
+								<td height="33">Материал жилы</td>
+								<td width="45">Cu</td>
+								<td width="45">Al</td>
+								<td width="45">Cu</td>
+								<td width="45">Al</td>
+								<td width="45">Cu</td>
+								<td width="45">Al</td>
+								<td width="45">Cu</td>
+								<td width="45">Al</td>
+								<td width="45">Cu</td>
+								<td width="45">Al</td>
+								<td width="45">Cu</td>
+								<td width="45">Al</td>
+							</tr>
+							<tr bgcolor="#f9f9f9">
+								<td>Кабели до 1 кВ</td>
+								<td>70.0</td>
+								<td>120.0</td>
+								<td>50.0</td>
+								<td>95.0</td>
+								<td>35.0</td>
+								<td>70.0</td>
+								<td>35.0</td>
+								<td>50.0</td>
+								<td>25.0</td>
+								<td>50.0</td>
+								<td>25.0</td>
+								<td>35.0</td>
+							</tr>
+							<tr>
+								<td>Кабели 6-10 кВ</td>
+								<td>50.0</td>
+								<td>95.0</td>
+								<td>35.0</td>
+								<td>50.0</td>
+								<td>25.0</td>
+								<td>50.0</td>
+								<td>25.0</td>
+								<td>35.0</td>
+								<td>16.0</td>
+								<td>25.0</td>
+								<td>16.0</td>
+								<td>25.0</td>
+							</tr>
+							<tr bgcolor="#f9f9f9">
+								<td>Провода в трубах</td>
+								<td>50.0</td>
+								<td>95.0</td>
+								<td>35.0</td>
+								<td>50.0</td>
+								<td>35.0</td>
+								<td>50.0</td>
+								<td>25.0</td>
+								<td>35.0</td>
+								<td>16.0</td>
+								<td>25.0</td>
+								<td>16.0</td>
+								<td>25.0</td>
+							</tr>
+						</tbody>
+					</table>
+					<p>Этот расчет основан на методике описанной в пособии Козлова В.Н. и Карпова Ф.Ф. на странице 134. Его найти можно в интернете.</p>
+					<p>Внимание! Полученные значения нельзя считать в качестве окончательного варианта, в каждом конкретном случае необходим расчет квалифицированного специалиста, с замером сечений жил применяемой кабельно-проводниковой продукции.</p>
+					<h2"></div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>
