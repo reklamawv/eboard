@@ -1,0 +1,267 @@
+
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru-ru" lang="ru-ru" dir="ltr">
+	<head>
+	  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор потери напряжения в кабеле</title>
+	  <script src="https://vk.com/js/api/mobile_sdk.js"  type="text/javascript"></script>
+	  
+	<style type="text/css">
+	body {
+      font: 14px/18px Open Sans; 
+      line-height: 18px;
+      color: #000000; }
+
+	h1, h2, h3, h4, h5, h6 { font-family: Arial, Helvetica, sans-serif; }
+
+	h1 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h2 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h3 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h4 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h5 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h6 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	.ot-menu a {
+		
+		
+	}
+	.ot-menu a:hover {
+		
+	}
+
+.form-horizontal .control-label{width:250px; !important; }
+	.auto-style20 {
+	background-color: #FF0000;
+}
+.auto-style21 {
+	background-color: #FFFF00;
+}
+
+ 
+.auto-style1 {
+	text-align: left;
+}
+.auto-style2 {
+	text-align: right;
+}
+.auto-style3 {
+	text-align: center;
+	font-weight: bold;
+	color: #ff0000;
+	font-size: x-large;
+}
+ 
+	</style>
+	
+<body style="background: rgb(234,255,215); background: linear-gradient(90deg, rgba(244,255,235,1) 0%, rgba(239,255,252,1) 52%, rgba(206,248,255,1) 100%);">
+<script language="javascript">
+            VK.init({
+              apiId: 51858291
+            });
+            </script>
+			
+ 
+
+<div class="l-canvas sidebar_none type_wide">
+
+	
+		
+		<header class="l-header pos_fixed bg_solid shadow_thin id_7012" itemscope itemtype="https://schema.org/WPHeader"></header>
+		
+	<section class="l-section wpb_row height_small color_alternate"></section>
+<div class="l-main">
+	<div class="l-main-h i-cf">
+
+		<main class="l-content" itemprop="mainContentOfPage">
+
+			
+			<section class="l-section wpb_row height_small"><div class="l-section-h i-cf"><div class="g-cols vc_row type_default valign_top"><div class="vc_col-sm-8 wpb_column vc_column_container"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column ">
+		<div class="wpb_wrapper">
+			<p>Калькулятор позволяет рассчитать, сколько времени проработает аккумулятор заданной емкости при заданном токе нагрузки. Это позволяет рационально подобрать источник питания для вашего электронного устройства в строгом соответствии с необходимыми размерами устройства.</p>
+
+		</div>
+	</div>
+
+	<div class="wpb_text_column ">
+		<div class="wpb_wrapper">
+			<h3 class="unit-title bolder">Калькулятор времени работы аккумулятора</h3>
+
+		</div>
+	</div>
+<div class="w-separator type_default size_small thick_1 style_dashed color_border align_center"><div class="w-separator-h"></div></div><div class="g-cols wpb_row type_default valign_top vc_inner  vc_custom_1569271790042"><div class="vc_col-sm-4 wpb_column vc_column_container"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_raw_code wpb_content_element wpb_raw_html" >
+		<div class="wpb_wrapper">
+			<label for="blc-capacity">Емкость аккумулятора (mAh)</label>
+<input type='number' placeholder="Емкость АКБ, mAh" id="blc-capacity">
+		</div>
+	</div>
+</div></div></div><div class="vc_col-sm-4 wpb_column vc_column_container"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_raw_code wpb_content_element wpb_raw_html" >
+		<div class="wpb_wrapper">
+			<label for="blc-consumption">Ток нагрузки (mA)</label>
+<input type='number' placeholder="Ток потребления, mA" id="blc-consumption">
+		</div>
+	</div>
+</div></div></div><div class="vc_col-sm-4 wpb_column vc_column_container"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_raw_code wpb_content_element wpb_raw_html" >
+		<div class="wpb_wrapper">
+			<label for="blc-consumption-rate">Поправочный коэффициент</label>
+<input type='number' placeholder="Поправочный коэффициент" id="blc-consumption-rate" value="0.7">
+		</div>
+	</div>
+</div></div></div></div><div class="g-cols wpb_row type_default valign_top vc_inner  vc_custom_1569271983779"><div class="vc_col-sm-12 wpb_column vc_column_container"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_raw_code wpb_content_element wpb_raw_html" >
+		<div class="wpb_wrapper">
+			<label for="blc-estimated-time">Время работы аккумулятора до разряда (часы)</label>
+<input type='number' placeholder="= (Емкость / нагрузка) * коэффициент" id="blc-estimated-time">
+		</div>
+	</div>
+</div></div></div></div><div class="g-cols wpb_row type_default valign_middle vc_inner "><div class="vc_col-sm-6 wpb_column vc_column_container"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column ">
+		<div class="wpb_wrapper">
+			<p>Как считает этот онлайн-калькулятор? Прежде всего, время работы устройства от аккумулятора и его разряд зависят от величины потребления устройства, измеряемой в миллиамперах (mA) и емкости батареи, измеряемой в ампер-часах (mAh).</p>
+<p>Ампер &#8211; это основная электрическая величина, определяющая количество тока, проходящего через нагрузку. Время работы и разряда батареи вычисляется, исходя из текущего значения емкости батареи и величины нагрузки.</p>
+
+		</div>
+	</div>
+</div></div></div></div>
+	<div class="wpb_text_column ">
+		<div class="wpb_wrapper">
+			<p>Цикл работы аккумулятора до допустимого разряда вычисляется по формуле:</p>
+<p><strong>Время работы аккумулятора = Емкость аккумулятора в mAh / ток нагрузки устройства в mA * 0.70*</strong></p>
+<p><em>* Поправочный коэффициент 0.70 необходим для учета внешних факторов, которые могут повлиять на срок службы батареи.</em></p>
+
+		</div>
+	</div>
+<div class="w-separator type_default size_small thick_1 style_solid color_border align_center"><div class="w-separator-h"></div></div>
+	<div class="wpb_text_column ">
+		<div class="wpb_wrapper">
+			<h2 class="unit-title">Упрощенная формула вычисления времени работы</h2>
+
+		</div>
+	</div>
+
+	<div class="wpb_text_column ">
+		<div class="wpb_wrapper">
+			<p>В более упрощенном онлайн-калькуляторе расчета аккумулятора, время работы может быть высчитано из значений емкости АКБ, измеряемой в ампер-часах и мощности потребляемой нагрузки, измеряемой в Ваттах.</p>
+<p>В таком случае значение вычисляется по формуле:</p>
+<p><strong>Время работы аккумулятора = (10 * емкость батареи) / нагрузка</strong></p>
+
+		</div>
+	</div>
+
+	<div class="wpb_text_column ">
+		<div class="wpb_wrapper">
+			<h3 class="unit-title">Упрощенная формула</h3>
+
+		</div>
+	</div>
+<div class="w-separator type_default size_small thick_1 style_dashed color_border align_center"><div class="w-separator-h"></div></div><div class="g-cols wpb_row type_default valign_middle vc_inner  vc_custom_1569272023086"><div class="vc_col-sm-4 wpb_column vc_column_container"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_raw_code wpb_content_element wpb_raw_html" >
+		<div class="wpb_wrapper">
+			<label for="blc-ampere-hours">Емкость в Ампер-часах (Ah)</label>
+<input type='number' placeholder="Ампер-часы, Ah" id="blc-ampere-hours">
+		</div>
+	</div>
+</div></div></div><div class="vc_col-sm-4 wpb_column vc_column_container"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_raw_code wpb_content_element wpb_raw_html" >
+		<div class="wpb_wrapper">
+			<label for="blc-load-in-watts">Нагрузка в Ваттах (W)</label>
+<input type='number' placeholder="Нагрузка в Ваттах, W" id="blc-load-in-watts">
+		</div>
+	</div>
+</div></div></div><div class="vc_col-sm-4 wpb_column vc_column_container"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_raw_code wpb_content_element wpb_raw_html" >
+		<div class="wpb_wrapper">
+			<label for="blc-runtime">Время работы (в часах)</label>
+<input type='number' placeholder="Время работы, h" id="blc-runtime">
+		</div>
+	</div>
+</div></div></div></div>
+	<div class="wpb_raw_code wpb_raw_js" >
+		<div class="wpb_wrapper">
+			<script type="text/javascript"> 
+var BCInput = document.getElementById("blc-capacity");
+var DCInput = document.getElementById("blc-consumption");
+var ConsRate = document.getElementById("blc-consumption-rate");
+
+var LoadInput = document.getElementById("blc-load-in-watts");
+var AmpInput = document.getElementById("blc-ampere-hours");
+
+function BatteryLife() {
+var Estimate = document.getElementById("blc-capacity").value / document.getElementById("blc-consumption").value * document.getElementById("blc-consumption-rate").value;
+document.getElementById("blc-estimated-time").value = parseFloat(Estimate.toFixed(10));
+}
+
+function Runtime() {
+var Runt = 10 * document.getElementById("blc-ampere-hours").value / document.getElementById("blc-load-in-watts").value;
+document.getElementById("blc-runtime").value = parseFloat(Runt.toFixed(10));
+}
+
+
+BCInput.addEventListener("keyup", BatteryLife);
+BCInput.addEventListener("input", BatteryLife);
+DCInput.addEventListener("keyup", BatteryLife);
+DCInput.addEventListener("input", BatteryLife);
+ConsRate.addEventListener("keyup", BatteryLife);
+ConsRate.addEventListener("input", BatteryLife);
+
+LoadInput.addEventListener("keyup", Runtime);
+LoadInput.addEventListener("input", Runtime);
+AmpInput.addEventListener("keyup", Runtime);
+AmpInput.addEventListener("input", Runtime);
+
+jQuery(function() {
+    jQuery('input[type=number]').on("wheel DOMMouseScroll mousewheel MozMousePixelScroll", function(event) {
+        event.preventDefault();
+        $this = jQuery(this);
+    });
+});
+
+</script>
+		</div>
+	</div>
+</div>
+			</div>
+			</div>
+			</div>
+		</div>
+		</section>
+
+			
+		</main>
+
+		
+	</div>
+</div>
+
+</div>
+	
+
+</body>
+</html>
