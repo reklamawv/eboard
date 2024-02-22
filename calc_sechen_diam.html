@@ -1,0 +1,152 @@
+
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru-ru" lang="ru-ru" dir="ltr">
+	<head>
+	  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор потери напряжения в кабеле</title>
+	  <script src="https://vk.com/js/api/mobile_sdk.js"  type="text/javascript"></script>
+	  
+	<style type="text/css">
+	body {
+      font: 14px/18px Open Sans; 
+      line-height: 18px;
+      color: #000000; }
+
+	h1, h2, h3, h4, h5, h6 { font-family: Arial, Helvetica, sans-serif; }
+
+	h1 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h2 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h3 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h4 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h5 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h6 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	.ot-menu a {
+		
+		
+	}
+	.ot-menu a:hover {
+		
+	}
+
+.form-horizontal .control-label{width:250px; !important; }
+	.auto-style20 {
+	background-color: #FF0000;
+}
+.auto-style21 {
+	background-color: #FFFF00;
+}
+
+ 
+.auto-style1 {
+	text-align: left;
+}
+.auto-style2 {
+	text-align: right;
+}
+.auto-style3 {
+	text-align: center;
+	font-weight: bold;
+	color: #ff0000;
+	font-size: x-large;
+}
+ 
+	</style>
+	
+<body style="background: rgb(234,255,215); background: linear-gradient(90deg, rgba(244,255,235,1) 0%, rgba(239,255,252,1) 52%, rgba(206,248,255,1) 100%);">
+<script language="javascript">
+            VK.init({
+              apiId: 51858291
+            });
+            </script>
+			
+ 
+<h1 class="entry-title">Определить сечение кабеля по диаметру</h1>	</header> 
+<div class="entry-content">
+ 
+<div class="wrpcal">
+	<label for="diametr">
+	<strong><label for="ploshchad">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
+</label></strong><br> 
+&nbsp;</label>    <label for="ploshchad">
+	<strong>
+	<table align="center" cellpadding="0" cellspacing="0" style="width: 60%">
+		<tr>
+			<td class="auto-style2" style="height: 20px">
+<label for="diametr">
+<strong>Диаметр жилы, мм<label for="ploshchad">
+</label>
+			</strong>	
+</label>    </td>
+			<td style="height: 20px"></td>
+			<td class="auto-style1" style="height: 20px"><label for="diametr">
+			<strong><label for="ploshchad">
+			Сечение жилы, мм<sup>2</sup></label></strong></label></td>
+		</tr>
+		<tr>
+			<td class="auto-style2"><label for="diametr">
+<input style="height: 38px; width: 180px;" id="diametr" type="text"  name="diametr" placeholder="Введите диаметр" onfocus="clearp();" onkeyup="podiametru();" onchange="podiametru();"></label></td>
+			<td class="auto-style3">=</td>
+			<td class="auto-style1"><label for="ploshchad">
+			<strong><sup>
+<input style="height: 38px; width: 180px;" id="ploshchad" type="text"  name="ploshchad" placeholder="или Введите сечение" onfocus="cleard();"  onkeyup="popolshchadi();" onchange="popolshchadi();"></sup></strong></label></td>
+		</tr>
+	</table>
+	</strong><br>
+&nbsp;</label></div>
+<script>
+function clearp(){
+diametr.value='';
+return true;
+}
+function cleard(){
+ploshchad.value='';
+return true;
+}
+function podiametru()
+{
+diametr.value = diametr.value.replace(/[^\d\.,]/g, '');
+var d=diametr.value.replace(/[,]/g, '.');
+ploshchad.value=(3.14159*0.25*d*d).toFixed(3); 
+return true;
+}
+function popolshchadi()
+{
+ploshchad.value = ploshchad.value.replace(/[^\d\.,]/g, '');
+var p=ploshchad.value.replace(/[,]/g, '.');
+diametr.value=Math.sqrt(p*4/3.14159).toFixed(3);
+return true;
+}
+</script>
+<br>
+<p style="text-align: justify;"><span lang="en-us">Здесь </span>можно определить сечение провода по диаметру без таблицы. Либо сделать обратное действие — перевести сечение в диаметр. Например, когда вам известно требуемое сечение проводника и перед вами стоит задача узнать какой должна быть жила в диаметре. Это удобно когда есть штангельциркуль или микрометр. С помощью этих инструментов можно измерить диаметр жилы и выяснить — достаточна ли эта жила для требуемого сечения. От вас требуется <b>ввести данные только в одно из полей калькулятора</b> — оставшееся значение посчитается автоматически. </p>
+<br><br><br>			</div>
+ 
+
+</body>
+</html>
