@@ -1,0 +1,463 @@
+
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru-ru" lang="ru-ru" dir="ltr">
+	<head>
+	  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор потери напряжения в кабеле</title>
+	  <script src="https://vk.com/js/api/mobile_sdk.js"  type="text/javascript"></script>
+	  
+	<style type="text/css">
+	body {
+      font: 14px/18px Open Sans; 
+      line-height: 18px;
+      color: #000000; }
+
+	h1, h2, h3, h4, h5, h6 { font-family: Arial, Helvetica, sans-serif; }
+
+	h1 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h2 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h3 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h4 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h5 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h6 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	.ot-menu a {
+		
+		
+	}
+	.ot-menu a:hover {
+		
+	}
+
+.form-horizontal .control-label{width:250px; !important; }
+	.auto-style20 {
+	background-color: #FF0000;
+}
+.auto-style21 {
+	background-color: #FFFF00;
+}
+
+ 
+.auto-style1 {
+	text-align: left;
+}
+.auto-style2 {
+	text-align: right;
+}
+.auto-style3 {
+	text-align: center;
+	font-weight: bold;
+	color: #ff0000;
+	font-size: x-large;
+}
+ 
+	</style>
+	
+<body style="background: rgb(234,255,215); background: linear-gradient(90deg, rgba(244,255,235,1) 0%, rgba(239,255,252,1) 52%, rgba(206,248,255,1) 100%);">
+<script language="javascript">
+            VK.init({
+              apiId: 51858291
+            });
+            </script>
+			
+ 	<div class="body-bg">
+			<div class="wrapper">
+				
+				<div class="section sectionMainbody">
+					<div class="container">
+						<div class="row">
+							<div class="main-page col-lg-9 col-lg-reset col-md-9 col-md-reset col-sm-9 col-sm-reset col-xs-12 col-xs-reset">
+								<div class="row ">
+									<div class="col-lg-12 col-lg-reset col-md-12 col-md-reset col-sm-12 col-sm-reset col-xs-12 col-xs-reset">
+										<div id="bd_results">
+											<div class="item-page" itemscope itemtype="http://schema.org/Article">
+												<div itemprop="articleBody" class="article_smart">
+													<div class="title_calc">
+<form name="grounding" class="grounding_t">
+    <table cellspacing="0" cellpadding="0" class="table_blur5">
+        <tbody>
+            <tr>
+                <td height="10" style="border-bottom: #000000 1px solid" colspan="3">
+                <h1 class="title11" align="center"><strong>
+				<span class="auto-style1" >Расчёт параметров системы заземления</span>             <script language="javascript">
+function calcgrounding(){
+    var form = document.grounding;	
+var a = form.verh.selectedIndex;
+    var verhunitsvalue = form.verh.options[a].value; // верхний слой грунта
+var b = form.k_verh.selectedIndex;
+    var k_verhunitsvalue = form.k_verh.options[b].value; // климат. коэфф. для вертикальных заземл.
+var c = form.nign.selectedIndex;
+    var nignunitsvalue = form.nign.options[c].value;// нижний слой
+var d = "";
+{
+if (k_verhunitsvalue == 1.9) d= 5.75;
+if (k_verhunitsvalue == 1.7) d= 4;  
+if (k_verhunitsvalue == 1.45) d= 2.25;
+if (k_verhunitsvalue == 1.3) d= 1.75;
+}
+var e = form.vert.selectedIndex;
+    var vertunitsvalue = form.vert.options[e].value; // коэфф. использования для вертикальных  заземлителей
+
+var e1 = "";
+{
+if (vertunitsvalue == 1) e1= 1;
+if (vertunitsvalue == 1.68) e1= 2;  
+if (vertunitsvalue == 2.28) e1= 3;
+if (vertunitsvalue == 2.84) e1= 4;
+if (vertunitsvalue == 3.35) e1= 5;
+if (vertunitsvalue == 3.9) e1= 6;  
+if (vertunitsvalue == 4.41) e1= 7;
+if (vertunitsvalue == 4.88) e1= 8;
+if (vertunitsvalue == 5.31) e1= 9;
+if (vertunitsvalue == 5.7) e1= 10;  
+if (vertunitsvalue == 6.16) e1= 11;
+if (vertunitsvalue == 6.6) e1= 12;
+if (vertunitsvalue == 7.02) e1= 13;
+if (vertunitsvalue == 7.42) e1= 14;  
+if (vertunitsvalue == 7.8) e1= 15;
+if (vertunitsvalue == 8.16) e1= 16;
+if (vertunitsvalue == 8.5) e1= 17;
+if (vertunitsvalue == 8.82) e1= 18;  
+if (vertunitsvalue == 9.12) e1= 19;
+if (vertunitsvalue == 9.4) e1= 20;
+}
+var Precision=5;
+var g = form.g_verh.value; // глубина верхнего слоя грунта
+var h = form.l_vert.value; // длина вертикального заземлителя
+var t = form.g_gorizont.value; // глубина горизонтального заземлителя
+var f = form.l_gorizont.value; // длина соединительной горизонтальной полосы
+var j = (h * (e1 - 1)) - (-f); // длина горизонт. заземлителя
+var k = form.b_vert.value; // диаметр верт. заземлителя
+var l = form.b_gorizont.value; // ширина горизонт. заземлителя
+var p = (verhunitsvalue * k_verhunitsvalue * nignunitsvalue * h) / (((verhunitsvalue * k_verhunitsvalue) * (h - g - (-t))) + (nignunitsvalue * (g - t)));
+var m = p / (2 * Math.PI * h);
+var m1 = p * d / (Math.PI * j);
+var r = Math.log((2 * h) / k);
+var n = Math.log(((4 * ((h / 2) - (-t))) - (-h)) / ((4 * ((h / 2) - (-t))) - h));
+var s = Math.log(j / Math.sqrt(l * t));
+if ((g <= 0) || (isNaN(g)))
+  {
+    alert('Глубина верхнего слоя должна быть больше 0');
+    return(0);
+  }
+if ((h <= 0) || (isNaN(h)))
+  {
+    alert('Длина вертикального заземлителя должна быть больше 0');
+    return(0);
+  }
+if ((t <= 0) || (isNaN(t)))
+  {
+    alert('Глубина горизонтального заземлителя должна быть больше 0');
+    return(0);
+  }
+if ((f <= 0) || (isNaN(f)))
+  {
+    alert('Длина соединительной полосы должна быть больше 0');
+    return(0);
+  }
+if ((k < 0.01) || (isNaN(k)))
+  {
+    alert('Диаметр вертикального заземлителя должен быть больше 10 мм.');
+    return(0);
+  }
+if ((l < 0.02) || (isNaN(l)))
+  {
+    alert('Ширина полосы горизонтального заземлителя должна быть больше 20 мм.');
+    return(0);
+  }
+var resist_ud = p;
+form.resist_ud.value = resist_ud.toPrecision(Precision); // удельное электрическое сопротивление грунта
+
+var resist_vert = m * (r + (n / 2));
+form.resist_vert.value = resist_vert.toPrecision(Precision); // сопротивление одного верт. заземлителя
+
+var dlina_gor = j;
+form.dlina_gor.value = j.toPrecision(Precision); // длина горизонт. заземлителя
+
+var resist_gor = m1 * s;
+form.resist_gor.value = resist_gor.toPrecision(Precision); // сопротивление горизонт. заземлителя
+
+var resist = ((resist_vert / vertunitsvalue) * resist_gor) / ((resist_vert / vertunitsvalue) + resist_gor);
+
+form.resist.value = resist.toPrecision(Precision);
+return true;
+}
+            </script></strong></h1>
+                </td>
+            </tr>
+                <tr>
+                <td width="264" height="10">
+                <p style="margin-left: 40px">Верхний слой грунта:</p>
+                </td>
+                <td width="335" colspan="2">
+                <p style="margin-left: 10px"><select style="width:290px" size="1" name="verh">
+                <option value="60">Песок сильно увлажненный (60)</option>
+                <option value="130">Песок умеренно увлажненный (130)</option>
+                <option value="400">Песок влажный (400)</option>
+                <option value="1500">Песок слегка влажный (1500)</option>
+                <option value="4200">Песок сухой (4200)</option>
+                <option value="1000">Песчаник (1000)</option>
+                <option value="300">Супесок (300)</option>
+                <option value="150">Супесь влажная (150)</option>
+                <option value="60">Суглинок сильно увлажненный (60)</option>
+                <option value="100">Суглинок полутвердый, лессовидный (100)</option>
+                <option value="190">Суглинок промерзший слой (190)</option>
+                <option value="60">Глина (при t &gt; 0&deg;С) (60)</option>
+                <option value="50">Торф при t = 0&deg;С (50)</option>
+                <option value="40">Торф при t &gt; 0&deg;С (40)</option>
+                <option value="25">Солончаковые почвы (при t &gt; 0&deg;С) (25)</option>
+                <option value="5000">Щебень сухой (5000)</option>
+                <option value="3000">Щебень мокрый (3000)</option>
+                <option value="5500">Дресва (при t &gt; 0&deg;С) (5500)</option>
+                <option value="40">Садовая земля (40)</option>
+                <option value="50">Чернозем (50)</option>
+                <option value="1000">Речная вода (1000)</option>
+                <option value="22500">Гранитное основание (при t &gt; 0&deg;С) (22500)</option>
+                </select></p>
+                </td>
+            </tr>
+            <tr>
+                <td width="264" height="10">
+                <p style="margin-left: 40px">Климатический коэффициент:</p>
+                </td>
+                <td width="335" colspan="2">
+                <p style="margin-left: 10px"><select style="width:290px" size="1" name="k_verh">
+                <option value="1.9">Климатическая зона I (Верт. - 1.9; Горизонт. - 5.75)</option>
+                <option value="1.7">Климатическая зона II (Верт. - 1.7; Горизонт. - 4.0)</option>
+                <option value="1.45">Климатическая зона III (Верт. - 1.45; Горизонт. - 2.25)</option>
+                <option value="1.3">Климатическая зона IV (Верт. - 1.3; Горизонт. - 1.75)</option>
+                </select></p>
+                </td>
+            </tr>
+            <tr>
+                <td width="264" height="10">
+                <p style="margin-left: 40px">Нижний слой грунта:</p>
+                </td>
+                <td width="335" colspan="2">
+                <p style="margin-left: 10px"><select style="width:290px" size="1" name="nign">
+                <option value="60">Песок сильно увлажненный (60)</option>
+                <option value="130">Песок умеренно увлажненный (130)</option>
+                <option value="400">Песок влажный (400)</option>
+                <option value="1500">Песок слегка влажный (1500)</option>
+                <option value="4200">Песок сухой (4200)</option>
+                <option value="1000">Песчаник (1000)</option>
+                <option value="300">Супесок (300)</option>
+                <option value="150">Супесь влажная (150)</option>
+                <option value="60">Суглинок сильно увлажненный (60)</option>
+                <option value="100">Суглинок полутвердый, лессовидный (100)</option>
+                <option value="190">Суглинок промерзший слой (190)</option>
+                <option value="60">Глина (при t &gt; 0&deg;С) (60)</option>
+                <option value="50">Торф при t = 0&deg;С (50)</option>
+                <option value="40">Торф при t &gt; 0&deg;С (40)</option>
+                <option value="25">Солончаковые почвы (при t &gt; 0&deg;С) (25)</option>
+                <option value="5000">Щебень сухой (5000)</option>
+                <option value="3000">Щебень мокрый (3000)</option>
+                <option value="5500">Дресва (при t &gt; 0&deg;С) (5500)</option>
+                <option value="40">Садовая земля (40)</option>
+                <option value="50">Чернозем (50)</option>
+                <option value="1000">Речная вода (1000)</option>
+                <option value="22500">Гранитное основание (при t &gt; 0&deg;С) (22500)</option>
+                </select></p>
+                </td>
+            </tr>
+            <tr>
+                <td width="264" height="10">
+                <p style="margin-left: 40px">Количество верт. заземлителей:</p>
+                </td>
+                <td width="335" colspan="2">
+                <p style="margin-left: 10px"><select style="width:290px" size="1" name="vert">
+                <option value="1.00">1 вертикальный заземлитель</option>
+                <option value="1.68">2 вертикальных заземлителя</option>
+                <option value="2.28">3 вертикальных заземлителя</option>
+                <option value="2.84">4 вертикальных заземлителя</option>
+                <option value="3.35">5 вертикальных заземлителей</option>
+                <option value="3.90">6 вертикальных заземлителей</option>
+                <option value="4.41">7 вертикальных заземлителей</option>
+                <option value="4.88">8 вертикальных заземлителей</option>
+                <option value="5.31">9 вертикальных заземлителей</option>
+                <option value="5.70">10 вертикальных заземлителей</option>
+                <option value="6.16">11 вертикальных заземлителей</option>
+                <option value="6.60">12 вертикальный заземлителей</option>
+                <option value="7.02">13 вертикальных заземлителей</option>
+                <option value="7.42">14 вертикальных заземлителей</option>
+                <option value="7.80">15 вертикальных заземлителей</option>
+                <option value="8.16">16 вертикальных заземлителей</option>
+                <option value="8.50">17 вертикальных заземлителей</option>
+                <option value="8.82">18 вертикальных заземлителей</option>
+                <option value="9.12">19 вертикальных заземлителей</option>
+                <option value="9.40">20 вертикальных заземлителей</option>
+                </select></p>
+                </td>
+            </tr>
+            <tr>
+                <td width="264" height="10">
+                <p style="margin-left: 40px">Глубина верхнего слоя грунта, H (м):</p>
+                </td>
+                <td width="244" height="10">&nbsp;</td>
+                <td width="105">
+                <p><input type="text" maxlength="10" size="10" name="g_verh" value="1" /></p>
+                </td>
+            </tr>
+            <tr>
+                <td width="494" height="10" colspan="2">
+                <p style="margin-left: 40px">Длина вертикального заземлителя, L1 (м):</p>
+                </td>
+                <td width="105">
+                <p><input type="text" maxlength="10" size="10" name="l_vert" value="5" /></p>
+                </td>
+            </tr>
+            <tr>
+                <td width="494" height="10" colspan="2">
+                <p style="margin-left: 40px">Глубина горизонтального заземлителя, h2 (м):</p>
+                </td>
+                <td width="105">
+                <p><input type="text" maxlength="10" size="10" name="g_gorizont" value="0.7" /></p>
+                </td>
+            </tr>
+            <tr>
+                <td width="494" height="10" colspan="2">
+                <p style="margin-left: 40px">Длина соединительной полосы, L3 (м):</p>
+                </td>
+                <td width="105">
+                <p><input type="text" maxlength="10" size="10" name="l_gorizont" value="1" /></p>
+                </td>
+            </tr>
+            <tr>
+                <td width="494" height="10" colspan="2">
+                <p style="margin-left: 40px">Диаметр вертикального заземлителя, D (м):</p>
+                </td>
+                <td width="105">
+                <p><input type="text" maxlength="10" size="10" name="b_vert" value="0.025" /></p>
+                </td>
+            </tr>
+            <tr>
+                <td width="494" height="10" colspan="2">
+                <p style="margin-left: 40px">Ширина полки горизонтального заземлителя, b (м):</p>
+                </td>
+                <td width="105">
+                <p><input type="text" maxlength="10" size="10" name="b_gorizont" value="0.04" /></p>
+                </td>
+            </tr>
+           
+            <tr>
+                <td width="494" height="10" colspan="2">
+                <p style="margin-left: 40px">Удельное электрическое сопротивление грунта:</p>
+                </td>
+                <td width="105">
+                <p><input type="text" maxlength="10" size="10" name="resist_ud" /></p>
+                </td>
+            </tr>
+            <tr>
+                <td width="494" height="10" colspan="2">
+                <p style="margin-left: 40px">Сопротивление одиночного верт. заземлителя:</p>
+                </td>
+                <td width="105">
+                <p><input type="text" maxlength="10" size="10" name="resist_vert" /></p>
+                </td>
+            </tr>
+            <tr>
+                <td width="494" height="10" colspan="2">
+                <p style="margin-left: 40px">Длина горизонтального заземлителя:</p>
+                </td>
+                <td width="105">
+                <p><input type="text" maxlength="10" size="10" name="dlina_gor" /></p>
+                </td>
+            </tr>
+            <tr>
+                <td width="494" height="10" colspan="2">
+                <p style="margin-left: 40px">Сопротивление горизонтального заземлителя:</p>
+                </td>
+                <td width="105">
+                <p><input type="text" maxlength="10" size="10" name="resist_gor" /></p>
+                </td>
+            </tr>
+            <tr>
+                <td width="494" height="10" colspan="2">
+                <p style="margin-left: 40px">Общее сопротивление растеканию электрического тока:</p>
+                </td>
+                <td width="105">
+                <p><b><font size="2" color="#00008b"><input type="text" maxlength="10" size="10" name="resist" /></font></b></p>
+                </td>
+            </tr>
+           
+            <tr>
+                <td height="35" colspan="3">
+                <p align="center">
+				<input type="button" onClick="calcgrounding(this.form)"  value="Расчёт" /> 
+				<input type="reset"   value="&nbsp;Сброс&nbsp;" /></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <p>*Формат ввода - х.хх (разделитель - точка)</p>
+   
+    <p><strong>R</strong> - общее сопротивление растеканию электрического тока</p>
+    <p><strong>R1</strong> - сопротивление &nbsp;вертикального заземлителя</p>
+    <p><strong>R2</strong> - сопротивление горизонтального заземлителя</p>
+    <p><strong>&rho;</strong> - удельное электрическое сопротивление грунта</p>
+    <p><strong>&rho;1</strong> - удельное электрическое сопротивление верхнего слоя грунта</p>
+    <p><strong>&rho;2</strong> - удельное электрическое сопротивление нижнего слоя грунта</p>
+    <p><strong>n</strong> - количество вертикальных заземлителей</p>
+    <p><strong>L1</strong> - длина вертикального&nbsp;заземлителя</p>
+    <p><strong>L2</strong> - длина горизонтального заземлителя</p>
+    <p><strong>L3</strong> - длина соединительной &nbsp;полосы до ввода в здание</p>
+    <p><strong>D</strong> - диаметр&nbsp;вертикального&nbsp;заземлителя</p>
+    <p><strong>b</strong> - ширина полки горизонтального заземлителя</p>
+    <p><strong>H</strong> - глубина верхнего слоя грунта</p>
+    <p><strong>h1</strong> - расстояние до середины вертикального заземлителя</p>
+    <p><strong>h2</strong> - расстояние до середины горизонтального&nbsp;заземлителя</p>
+    <p><strong>k1</strong> - климатический коэффициент для вертикальных заземлителей</p>
+    <p><strong>k2</strong> - климатический коэффициент для горизонтальных&nbsp;заземлителей</p>
+    <p><strong>&eta;</strong> - коэффициент использования для вертикальных электродов</p>
+</form>
+</div>
+												</div>
+
+	
+	
+						 </div>
+										</div>
+									</div>
+				</div>
+			</div>
+					</div>
+				</div>
+			</div>
+			
+			</div>
+
+		</div>
+
+<p>В калькуляторе использована методика расчёта системы заземления в двухслойном грунте состоящей из вертикальных заземлителей, приведённая в <b>«Инструкции по расчёту и проектированию электрохимической защиты от коррозии магистральных газопроводов</b><b>» </b>(СТО Газпром 2-3.5-047-2006).</p>
+<p class="auto-style1"><img class="img95" width="624" height="188" alt="Расчёт параметров системы заземления" src="zaz.png"></p>
+<p style="text-align: center"><img class="img95" width="624" height="92" alt="" src="calc_ground.gif"></p>
+
+ 
+
+</body>
+</html>
