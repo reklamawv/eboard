@@ -1,0 +1,1731 @@
+
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru-ru" lang="ru-ru" dir="ltr">
+	<head>
+	  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор потери напряжения в кабеле</title>
+	  <script src="https://vk.com/js/api/mobile_sdk.js"  type="text/javascript"></script>
+	  
+	<style type="text/css">
+	body {
+      font: 14px/18px Open Sans; 
+      line-height: 18px;
+      color: #000000; }
+
+	h1, h2, h3, h4, h5, h6 { font-family: Arial, Helvetica, sans-serif; }
+
+	h1 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h2 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h3 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h4 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h5 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h6 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	.ot-menu a {
+		
+		
+	}
+	.ot-menu a:hover {
+		
+	}
+
+.form-horizontal .control-label{width:250px; !important; }
+	.auto-style20 {
+	background-color: #FF0000;
+}
+.auto-style21 {
+	background-color: #FFFF00;
+}
+
+ 
+.auto-style1 {
+	text-align: left;
+}
+.auto-style2 {
+	text-align: right;
+}
+.auto-style3 {
+	text-align: center;
+	font-weight: bold;
+	color: #ff0000;
+	font-size: x-large;
+}
+ 
+	</style>
+	
+<body style="background: rgb(234,255,215); background: linear-gradient(90deg, rgba(244,255,235,1) 0%, rgba(239,255,252,1) 52%, rgba(206,248,255,1) 100%);">
+<script language="javascript">
+            VK.init({
+              apiId: 51858291
+            });
+            </script>
+			
+ 
+
+<script>
+var err1 = "нет выбора";
+var err2 = "вне таблиц";
+var err3 = "Сечение провода по нагреву и потерям";
+var err4 = "Нагрузочная способность проводника";
+var err5 = "Потери и максимальные параметры линии";
+var err6 = "по нагреву, запас";
+var err7 = "паритет, запас";
+var err8 = "по потерям, запас";
+var err9 = "Нет";
+var err10 = "по нагреву, с запасом";
+var err11 = "по потерям, с запасом";
+var err12 = "линия с запасом";
+var err13 = "Запас не может превышать 100%";
+var err14 = "выбора";
+var err15 = "выбора";
+var err16 = "выбора";
+var err17 = "выбора";
+var err18 = "выбора";
+var err19 = "выбора";
+
+</script>
+<script language="JavaScript">
+<!-- 
+   var CosFi, Col, CableDiamGr, DWires, ErrMsg, HeatLost, I, IKz, IHeatMax, ImaxK, ImaxW, j=6, Kee, KGround=1,
+       KLoad, Konp, KonpSave, KpopravT, ktip, Kz, KWires, L, LmaxK, LmaxW, LostK, LostW, KBr, Kme =1, KZdec,
+       ModeK, ModeW, N1=19, N2=15, N3=14, NLost=0, NodeCur, NWires, NWiresSave, NLW, OldChangeLost, Out =false, P, ro=0.017,
+       RTnormal=120, RTremem, SRes, SHeatRes, SLostRes, KPower, S, SCurrent, SK, SKI, SLostKz, SLost, SHeat, SH,  SHW, SL, SLW, LostKS,
+     SW, SWI, type, Phases, 
+       U, U0, UHeatLost, UoutK, UoutW, UResLost, Usr, U1phase, U3phase; // Percent, ResLost,AddEnable,
+       
+   U1phase     = " 230";     // === напряжение 1-фазной сети по умолчанию                           
+   U3phase     = " 400";     // === напряжение 3-фазной сети по умолчанию                           
+   U1halohen   = " 12";      // === напряжение питания галогенных ламп                           
+   CosНeater   = " 1";       // === косинус потерь нагревателях, лампах накаливания 
+   CosMotor400 = " 0.85";    // === косинус потерь в двигателях 400В                         
+   CosMotor230 = " 0.75";    // === косинус потерь в двигателях 230В                          
+   CosMotor    = " 0.85";    // === косинус потерь в двигателях 230В                          
+   CosLumEl    = " 0.9";     // === косинус потерь в ЛДС с электронным балластом, телевизорах   
+   CosLumDr    = " 0.4"      // === косинус потерь в ЛДС с дросселем    
+   CosComputer = " 0.65"     // === косинус потерь в компьютерах, телевизорах   
+   KPDHeater   = " 1";       // === КПД ТЭНа, лампы                                               
+   KPDMotor    = " 0.85";    // === КПД двигателя                                               
+   roCu        = " 0.017"
+   roAl        = " 0.028"
+    
+//      1.3.4      Таблица нагрузок проводников с медными жилами    |  1.3.6 Таблица нагрузок медных кабелей | 1.3.8 медные шнуры    |  ГОСТ 16442-80 табл.23
+//        j:    0       1       2       3       4       5       6   |    7       8      9       10      11   |   12       13      14 |     15      16      17       18      19      20 
+Col = 21;
+ColNames = Array ("сеч.мм2","1-жильные открыто","два 1-жильных","три 1-жильных","четыре 1-жильных","один 2-жильный","один 3-жильный",
+                             "1-жильный в воздухе","2-жильный в воздухе","2-жильный в земле","3-жильный в воздухе","3-жильный в земле",
+               "шнур 1-жильный", "шнур 2-жильный", "шнур 3-жильный", 
+               "1-жильный в воздухе", "1-жильный в земле", "2-жильный в воздухе", "2-жильный в земле", "3-жильный в воздухе", "3-жильный в земле");          
+
+//           сеч.мм2  откр    2*1ж    3*1ж    4*1ж    1*2ж    1*3ж | 1жВозд  2жВозд  2жЗемл  3жВозд  3жЗемл  | 1Ж      2Ж      3ж    |  1жВозд   1жЗемл   2жВозд   2жЗемл   3жВозд   3жЗемл |  
+ICu = Array (  20,     20,     16,     16,     15,     15,     15,     18,     17,     17,     17,     17,     13,     13,     13,      18,      18,      12,      12,      18,      18,   //   0 
+            // ---------------------------------------------------------------------------------------------------------                                                                                           
+                0.5,   11,     10,      9,      8,      7,      6,      0,      0,      0,      0,      0,      0,      12,     0,       0,       0,       0,       0,       0,       0,   //   1
+                0.75,  15,     14,     13,     12,     11,     10,      0,      0,      0,      0,      0,      0,      16,    14,       0,       0,       0,       0,       0,       0,   //   2
+                1,     17,     16,     15,     14,     15,     14,      0,      0,      0,      0,      0,      0,      18,    16,       0,       0,       0,       0,       0,       0,   //   3 
+                1.5,   23,     19,     17,     16,     18,     15,     23,     19,     33,     19,     27,      0,      23,    20,      29,      32,      24,      33,      21,      28,   //   4
+                2.5,   30,     27,     25,     25,     25,     21,     30,     27,     44,     25,     38,     40,      33,    28,      40,      42,      33,      44,      28,      37,   //   5
+                4,     41,     38,     35,     30,     32,     27,     41,     38,     55,     35,     49,     50,      43,    36,      53,      54,      44,      56,      37,      48,   //   6
+                6,     50,     46,     42,     40,     40,     34,     50,     50,     70,     42,     60,     65,      55,    45,      67,      67,      56,      71,      49,      58,   //   7
+               10,     80,     70,     60,     50,     55,     50,     80,     70,    105,     55,     90,     90,      75,    60,      91,      89,      76,      94,      66,      77,   //   8
+               16,    100,     85,     80,     75,     80,     70,    100,     90,    135,     75,    115,    120,      95,    80,     121,     116,     101,     123,      87,     100,   //   9
+               25,    140,    115,    100,     90,    100,     85,    140,    115,    175,     95,    150,    160,     125,   105,     160,     148,     134,     157,     115,     130,   //  10
+               35,    170,    135,    125,    115,    125,    100,    170,    140,    210,    120,    180,    190,     150,   130,     197,     178,     166,     190,     141,     158,   //  11
+               50,    215,    185,    170,    150,    160,    135,    215,    175,    265,    145,    225,    235,     180,   160,     247,     217,     208,     230,     177,     192,   //  12
+               70,    270,    225,    210,    185,    195,    175,    270,    215,    320,    180,    275,    290,     235,   200,     318,     265,       0,       0,     226,     237,   //  13
+               95,    330,    275,    255,    225,    245,    215,    325,    260,    385,    220,    330,      0,       0,     0,     386,     314,       0,       0,     274,     280,   //  14
+              120,    385,    315,    290,    260,    295,    250,    385,    300,    445,    260,    385,      0,       0,     0,     450,     358,       0,       0,     321,     321,   //  15 
+              150,    440,    360,    330,      0,      0,      0,    440,    350,    505,    305,    435,      0,       0,     0,     521,     406,       0,       0,     370,     363,   //  16 
+              185,    510,      0,      0,      0,      0,      0,    510,    405,    570,    350,    500,      0,       0,     0,     594,     455,       0,       0,     421,     406,   //  17 
+              240,    605,      0,      0,      0,      0,      0,    605,      0,      0,      0,      0,      0,       0,     0,     704,     525,       0,       0,     499,     468,   //  18 
+              300,    695,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,       0,     0,       0,       0,       0,       0,       0,       0,   //  19    
+              400,    830,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,       0,     0,       0,       0,       0,       0,       0,       0);  //  20 
+
+   
+//  1.3.5    Таблица нагрузок проводников с алюминиевыми жилами    |  1.3.7 Табл нагр кабелей с алюминиевыми ж| 1.3.8 медные шнуры    |  ГОСТ 16442-80 табл.24
+//        j:    0       1       2       3       4       5       6  |    7       8       9      10     11           
+//           сеч.мм2  откр    2*1ж    3*1ж    4*1ж    1*2ж    1*3ж | 1жВозд  2жВозд  2жЗемл  3жВозд  3жЗемл   | 1Ж      2Ж      3ж    |  1жВозд   1жЗемл   2жВозд   2жЗемл   3жВозд   3жЗемл |         
+IAl=Array    ( 16,     16,     12,     12,     11,     11,     11,     14,     13,     13,     13,     13,      0,       0,     0 ,      14,      14,       8,       8,      14,      14,     // размер столбца 
+            // ---------------------------------------------------------------------------------------------------------
+               2.5,    24,     20,     19,     19,     19,     16,     23,     21,     34,     19,     29,      0,       0,     0 ,      30,      32,      25,      33,      21,      28,     //  1
+                4,     32,     28,     28,     23,     25,     21,     31,     29,     42,     27,     38,      0,       0,     0 ,      40,      41,      34,      43,      29,      37,     //  2    
+                6,     39,     36,     32,     30,     31,     26,     38,     38,     55,     32,     46,      0,       0,     0 ,      51,      52,      43,      54,      37,      44,     //  3  
+               10,     60,     50,     47,     39,     42,     38,     60,     55,     80,     42,     70,      0,       0,     0 ,      69,      68,      58,      72,      50,      59,     //  4
+               16,     75,     60,     60,     55,     60,     55,     75,     70,    105,     60,     90,      0,       0,     0 ,      93,      83,      77,      94,      67,      77,     //  5    
+               25,    105,     85,     80,     70,     75,     65,    105,     90,    135,     75,    115,      0,       0,     0 ,     122,     113,     103,     120,      88,     100,     //  6 
+               35,    130,    100,     95,     85,     95,     75,    130,    105,    160,     90,    140,      0,       0,     0 ,     151,     136,     127,     145,     109,     121,     //  7 
+               50,    165,    140,    130,    120,    125,    105,    165,    135,    205,    110,    175,      0,       0,     0 ,     189,     166,     159,     176,     136,     147,     //  8 
+               70,    210,    175,    165,    140,    150,    135,    210,    165,    245,    140,    210,      0,       0,     0 ,     233,     200,       0,       0,     167,     178,     //  9 
+               95,    255,    215,    200,    175,    190,    165,    250,    200,    295,    170,    255,      0,       0,     0 ,     284,     237,       0,       0,     204,     212,     //  10
+              120,    295,    245,    220,    200,    230,    190,    295,    230,    340,    200,    295,      0,       0,     0 ,     330,     269,       0,       0,     236,     241,     //  11
+              150,    340,    275,    255,      0,      0,      0,    340,    270,    390,    235,    335,      0,       0,     0 ,     380,     305,       0,       0,     273,     274,     //  12 
+              185,    390,      0,      0,      0,      0,      0,    390,    310,    465,    270,    385,      0,       0,     0 ,     436,     343,       0,       0,     313,     308,     //  13
+              240,    465,      0,      0,      0,      0,      0,    465,      0,      0,      0,      0,      0,       0,     0 ,     515,     396,       0,       0,     369,     355,     //  14
+              300,    535,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,       0,     0 ,       0,       0,       0,       0,       0,       0,     //  15
+              400,    645,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,       0,     0 ,       0,       0,       0,       0,       0,       0);    //  16
+    
+
+   
+// =============================================================
+
+function dFilter(evt)
+{
+var input = evt.target;
+input.value = input.value.replace(/[^0-9\.\>\,\<\б\Б\ю\Ю\?\/]/g,'').replace(/[^0-9\.]/g, ".").replace( /^([^\.]*\.)|\./g, '$1' );
+}
+
+// =============================================================
+function CheckInput(evt)
+{ 
+var charCode;
+if (!evt) evt = event;
+if (evt.charCode)
+    { charCode = evt.charCode;
+    }
+    else if (evt.keyCode)
+                     { charCode = evt.keyCode;
+                      }
+                else if (evt.which)
+                              { 
+                  charCode = evt.which;
+                }
+                         else charCode = 0;
+
+    return (charCode <= 31 || (charCode >= 48 && charCode <= 57) || charCode == 46)
+  } 
+
+// ====================================================================================================================
+
+function Start()	// === Инициализация всего, что нужно
+{ with (document)
+  { getElementById("ModeKtxt").innerHTML     = err1;
+    getElementById("ModeZapas").innerHTML    = " + ";
+      getElementById("SKItxt").innerHTML       = "S";
+    U  = getElementById("Voltage").value;
+    Phases = getElementById("Phase").value;
+    Kz = 1 + getElementById("Kzapas").value/100;
+    ChangeNumLoadWires();
+    ChangeModeProgram();
+    ChangeTable();
+    NodeCur = 0;
+    NWiresSave = 3;
+    NLost=0;
+    ChangeRTGround(RTnormal);
+    ChangeTip();
+    };
+};
+   
+// ====================================================================================================================
+
+function Defoult()	// === сброс всего, что нужно
+{ with (document)
+  { ModeK = err1;
+    SK    = err2;
+    ImaxK = 0;
+    LmaxK = 0;
+    LostK = 0;
+    UoutK = U;
+   };
+};
+
+// ====================================================================================================================
+
+function Rnd( Num, Null )	// === округление с точностью в 1%
+{ 
+var N=Num;
+if (N != 0 )
+  {
+  D = Math.floor(Math.log(N)/Math.log("10"));
+  N=N*Math.pow("10",2-D);
+  N=Math.round(N)/Math.pow("10",2-D);
+  }
+return N;
+};
+   
+// ====================================================================================================================
+   
+function ChangeUser()   // выбран другой потребитель
+{ with (document)
+   { Usr = getElementById("User").value;
+     if      ( Usr == "Мotor"       ) {CosFi = CosMotor;} 
+     else if ( Usr == "Мotor230"    ) {CosFi = CosMotor230; U = U1phase;    
+                                                   if (getElementById( "Phase" ).value > 2) Phases = 2 
+                                    }
+     else if ( Usr == "Мotor3400"   ) {CosFi = CosMotor400; U = U3phase;   
+                                                  if (getElementById( "Phase" ).value < 6)  Phases = 6 
+                    }
+   
+     else if ( Usr == "Нeater"      ) {CosFi = CosНeater}
+     else if ( Usr == "Heater12"    ) {CosFi = CosНeater;   U = U1halohen;
+                                                   if (getElementById( "Phase" ).value > 2) Phases = 2 
+                                    }
+     else if ( Usr == "Нeater230"   ) {CosFi = CosНeater;   U = U1phase; 
+                                                   if (getElementById( "Phase" ).value > 2) Phases = 2 
+                                    }
+
+     else if ( Usr == "Нeater400"   ) {CosFi = CosНeater;   U = U3phase; 
+                                                   if ((getElementById( "Phase" ).value != 3) &&
+                               (getElementById( "Phase" ).value != 4))Phases = 2 
+                                    }
+
+   
+     else if ( Usr == "Нeater3400"  ) {CosFi = CosНeater;   U = U3phase;  
+                                                   if (getElementById( "Phase" ).value < 6) Phases = 6 
+                                    }
+   
+     else if ( Usr == "Computer"    ) {CosFi = CosComputer; U = U1phase; 
+                                                   if (getElementById( "Phase" ).value > 2) Phases = 2 
+                    }
+
+     else if ( Usr == "LuminEl"     ) {CosFi = CosLumEl;    U = U1phase; 
+                                                   if (getElementById( "Phase" ).value > 2) Phases = 2 
+                    }
+
+     else if ( Usr == "LuminDr"     ) {CosFi = CosLumDr;    U = U1phase; 
+                                                   if (getElementById( "Phase" ).value > 2) Phases = 2 
+                    }
+   getElementById( "Voltage" ).value = U;
+   getElementById( "Phase" ).value = Phases;
+   getElementById( "CosF" ).value = CosFi;
+     ChangeTable ();
+   ChangeLost ();
+
+     Calc();
+   };
+};   
+   
+// ====================================================================================================================
+
+function ChangePhase()   // изменена фазность
+{ with (document)
+   { Usr = getElementById("User").value; 
+     Phases = getElementById("Phase").value;
+   U = getElementById("Voltage").value;
+     if (Usr != "Other" ) // автовыбор, если напряжение не вводилось пользователем
+         { if ( Usr.search("tor" ) != -1 )   // потребитель - двигатель
+          { if      ( Phases  <= 2 )                getElementById("User").value = "Мotor230"  // однофазный двигатель
+          else if ( (Phases == 3)|(Phases == 4) ) getElementById("User").value = "Мotor"     // однофазный двигатель нест.пит.
+          else if ( Phases  >= 5 )                getElementById("User").value = "Мotor3400" // трехфазный двигатель
+          }
+         if ( Usr.search("ter" ) != -1 )   // потребитель - нагреватель
+          { if      ( Phases <= 2 )       // однофазный нагреватель        
+                    {if ( getElementById("Voltage").value == 12 )  
+                       getElementById("User").value = "Heater12" 
+                   else { getElementById("User").value = "Нeater230";
+                                     U = U1phase;
+                      }
+                }
+          else if ( (Phases == 3)|(Phases == 4) ) // двухфазный нагреватель
+                  { getElementById("User").value = "Нeater400";    
+                U = U3phase;
+              }
+          else if ( Phases >= 5 )                 // трехфазный нагреватель
+                  { getElementById("User").value = "Нeater3400";   
+                U = U3phase;					   
+              }
+          }	 
+           if ( Usr.search("min" ) != -1 )   // потребитель - люминисцентная лампа
+          { 
+            if ( Phases >= 3 ) {
+              getElementById("User").value = "Other" // трехфазный двигатель
+            }
+          }
+       }  
+    else {                                     // потребитель - другое
+       };
+   ChangeUser ();		
+   ChangeTable(); 
+     getElementById("Voltage").value = U;
+     Calc();
+   };
+};
+
+// ====================================================================================================================
+
+function ChangeCos()   // изменено поле ввода косинуса фи
+{ with (document)
+      if ((getElementById("CosF").value > 1) || (getElementById("CosF").value < 0))
+       { alert ("ОШИБКА: cos(fi) не введен, меньше нуля или больше  единицы \n типовое значение - 0,5..0,8, \n" +
+                  "или введено нечисловое значение (десятичный разделитель - точка) \n" + 
+          "Значение будет установлено по умолчанию равным " + CosMotor);
+       getElementById("CosF").value = CosMotor;
+       getElementById("CosF").focus();
+     };
+Calc();
+};
+
+// ====================================================================================================================
+
+function ChangeKPD()   // изменено поле ввода КПД
+{ with (document)
+      if ( (getElementById("KPD").value > 1) || (getElementById("KPD").value < 0))
+       { alert ("ОШИБКА: КПД не введен, меньше нуля или больше  единицы \n" +
+                  "или введено нечисловое значение (десятичный разделитель - точка) \n" + 
+          "Значение будет установлено по умолчанию равным " + KPDMotor);
+       getElementById("KPD").value = KPDMotor;
+       getElementById("KPD").focus();
+     };
+Calc();
+};
+
+// ====================================================================================================================
+
+function ChangeSign(Field)   // выбор знака запаса 
+{ with (document)
+    { switch (Field)
+       { case "+": { getElementById("ModeZapas").innerHTML = " + ";
+                     Kz = 1 + getElementById("Kzapas").value/100;
+                       break;
+                   };
+         case "-": { getElementById("ModeZapas").innerHTML = " - ";
+                     Kz = 1 - getElementById("Kzapas").value/100;
+                       break;
+                   };
+     };
+    };
+  Calc ();
+};
+
+// ====================================================================================================================
+
+function CalcPower( I )   // вычислить мощность
+{ with (document)
+  { var KPower;
+    CosFi = getElementById("CosF").value;
+  KPower = getElementById("KW").value;
+    if (getElementById("Phase").value >= 5) // 3 фазы?
+            P = (U*I*CosFi*1.73/KPower)
+       else P = (U*I*CosFi/KPower);
+  };
+return P;
+};
+
+// ====================================================================================================================
+
+     
+function CalcCurrent( P )   // вычислить ток
+{ with (document)
+  { var KPower;
+    CosFi = getElementById("CosF").value;
+  KPower = getElementById("KW").value;
+    if (CosFi == 0)
+           I = ""
+      else { if (getElementById("Phase").value >= 5) // 3 фазы?
+                       I = (P*KPower/(U*CosFi*1.73))
+                  else I = (P*KPower/(U*CosFi));
+       };
+  };
+return I;
+};
+
+// ====================================================================================================================				   
+
+function ChangeNumLoadWires()   // изменено количество одновременно нагруженных проводников
+{ with (document)
+  {                                   // === поправка на количество нагруженных проводников
+    NLW = getElementById("NumWires").value 
+      if (( NLW < 1) || ( NLW *0 != 0))
+      { alert ("ОШИБКА: Мало нагруженных проводников \n" + 
+                   "или введено нечисловое значение (десятичный разделитель - точка) \n")
+              getElementById("NumWires").value="";
+          getElementById("NumWires").focus();			   
+          }				  
+    else{ 
+          NLW = Math.floor (NLW);
+          if (NLW <= 4)                           { Konp = "1"    }                  
+              else if ((NLW >= 5  ) && ( NLW <= 6)) { Konp = "0.68" } 
+                else if ((NLW  >= 7 ) && (NLW  <= 9)) { Konp = "0.63" } 
+                else if ( NLW  >= 10)                 { Konp= "0.6"   };
+         }    
+    getElementById("NumWires").value = NLW;
+
+    };
+Calc();	
+};
+
+// ====================================================================================================================				   
+
+function ChangeJ()   // выбор столбца таблицы
+{ with (document)
+  {                         
+    var TableNum;
+    var Trassa = getElementById("Tip").value;
+    if (Trassa == "tWir_N") {
+      if (Phases >= 5) {
+        j = 6
+      } else {
+        j = 5
+      };
+    }; // === N - трех или двухжильный
+    if (Trassa == "tWir_tube" )      {
+      if (Phases >= 5) {
+        j = 3 
+      } else {
+        j = 2
+      }; 
+    }; // === в трубе
+    if (Trassa == "tWir_lotok")      {                  j = 1;                }; // === открыто
+    if (Trassa == "tCabPUE_1air" )   {                  j = 7;                }; // === 1ж кабель в воздухе
+    if (Trassa == "tCabPUE_air"  )   {
+      if (Phases >= 5) {
+        j = 10
+      } else {
+        j = 8
+      }; 
+    }; // === 2ж-3ж кабель в воздухе
+    if (Trassa == "tCabPUE_earth")   {
+      if (Phases >= 5) {
+        j = 11
+      } else {
+        j = 9
+      }; 
+    }; // === 2ж-3ж кабель в воздухе
+    if (Trassa == "tShn"      )      {
+      if (Phases >= 5) {
+        j = 14
+      } else {
+        j = 13
+      };
+    }; // === 2ж-3ж кабель в воздухе	
+     
+    if (Trassa == "tCabGOST_1air" )  {                  j = 15;               }; // === 1ж кабель в воздухе по ГОСТ
+    if (Trassa == "tCabGOST_1earth") {                  j = 16;               }; // === 1ж кабель в земле по ГОСТ
+      
+    if (Trassa == "tCabGost_air"  )  {
+      if (Phases >= 5) {
+        j = 19
+      } else {
+        j = 17
+      };
+    }; // === 2ж-3ж кабель в воздухе по ГОСТ
+    if (Trassa == "tCabGOST_earth")  {
+      if (Phases >= 5) {
+        j = 20
+      } else {
+        j = 18
+      };
+    }; // === 2ж-3ж кабель в земле по ГОСТ
+    
+  };
+};	
+
+// ====================================================================================================================   
+
+function ChangeTable() // изменен металл
+{ with (document)
+    { var tipTable = getElementById("Tip").value, OutTxt="";
+    ChangeJ();
+    if (getElementById("Metall").value == "cu")
+            { ro = roCu;
+                if ((j>=1)  && (j<=6) ) OutTxt="табл. 1.3.4";
+                if ((j>=7)  && (j<=11)) OutTxt="табл. 1.3.6";
+                if ((j>=12) && (j<=14)) OutTxt="табл. 1.3.8";
+                if ((j>=15) && (j<=20)) OutTxt="табл. 23, до 3КВ";
+        }
+     else { ro = roAl;
+                if ((j>=1)  && (j<=6) ) OutTxt="табл. 1.3.5";
+                if ((j>=7)  && (j<=11)) OutTxt="табл. 1.3.7";
+                if ((j>=12) && (j<=14)) OutTxt="табл. 1.3.9";
+                if ((j>=15) && (j<=20)) OutTxt="табл. 24, до 3КВ";
+          }
+    //alert (j+",   "+ColNames [j]);	  
+    getElementById("Tabletxt").innerHTML = OutTxt + ", " + ColNames [j]; // + ",  "+j;
+    Calc ();
+  };
+};
+
+// ====================================================================================================================   
+
+function ChangeTip() // выбор провода/кабеля
+{ with (document)
+    { if ( (getElementById("Tip").value == "tWir_N") || (getElementById("Tip").value == "tWir_tube") ) // прокладка в лотке, пучке
+           { if ( getElementById("NumWires").disabled == true )   // был запрет на ввод ОНП
+            { getElementById("NumWires").value = NWiresSave;  // восстановить значение
+            ChangeNumLoadWires();                           // пересчитать
+          }
+         getElementById("NumWires").disabled = false;         // снять запрет на ввод ОНП
+       }
+    else {                                                     // прокладка в воздухе, земле и свободно, шнуры
+           if ( getElementById("NumWires").disabled == false ) // не было запрета на ввод ОНП
+            NWiresSave = getElementById("NumWires").value;   // сохранить текущее значение
+         getElementById("NumWires").value = 3;               // Присвоить минимум
+         ChangeNumLoadWires();                               // пересчитать
+               getElementById("NumWires").disabled = true;         // запретить ввод ОНП
+         getElementById("NumWires").value = NWiresSave;      // Восстановить количество проводников для отображения			   
+         }
+      if (getElementById("Tip").value == "tCabPUE_earth") // прокладка кабеля в земле
+            { getElementById("RTGround").disabled = false
+          ChangeRTGround (RTremem);
+        }
+     else { RTremem=getElementById("RTGround").value;
+            ChangeRTGround (RTnormal);
+            getElementById("RTGround").disabled = true;
+        getElementById("KGroundtxt").innerHTML = "";
+          }
+    ChangeTable();
+  };
+};
+
+// ====================================================================================================================				   
+
+function SquareHeat(Current)  // === расчет сечения по нагреву 
+{ 
+with (document)
+     { 
+     var ResSH, Icorrect;
+     Out = false;
+   ChangeJ();
+     switch (getElementById("Metall").value)
+            { 
+            case ("cu"):  // проводник медный
+                 { 
+                 ii = ICu[j];      // количество токов в столбце
+                 if (ICu[ii*Col+j] * Konp * KGround >= Current )  // если ток не выходит за рамки таблицы 
+                         { 
+                         while ( (ICu[ii*Col+j] * Konp * KGround >= Current ) && (ii > 0) ) 
+                               ii--; // дойти до первого большего тока
+                         ResSH = ICu[(ii+1)*Col];                                      // вернуть первое большее значение
+                         }
+                    else { 
+                         Out = true;
+                         }
+                 break;
+                 };
+            case ("al"):  // проводник алюминиевый
+                 { 
+                 ii = IAl[j];      // количество токов в столбце
+                 if (IAl[ii*Col+j] * Konp * KGround >= Current )	         // если ток не выходит за рамки таблицы 
+                         { while ( (IAl[ii*Col+j] * Konp * KGround >= Current ) && (ii > 0) ) 
+                                 ii--; // дойти до первого большего тока
+                           ResSH = IAl[(ii+1)*Col];                                 // вернуть первое большее значение
+                         }
+                    else { 
+                         Out = true;
+                         }
+                 break;
+                 };
+            }; //switch ("me")
+
+    return ResSH;
+     }; //  function SquareHeat(Current) 
+};
+
+// ====================================================================================================================
+
+function SquareLost(Current,Lng,Prc)       //===расчет сечения по потерям 
+{ with (document)
+    { var ResSL;
+      if (Phases >= 5)             // реальное сечение по потерям
+             SLost = (1.73*Current*ro*Lng*100*CosFi) / (U*Prc)
+      else SLost = (2*Current*ro*Lng*100*CosFi) / (U*Prc);
+    ii = 0;
+      if (getElementById("Metall").value == "cu")	
+           { while ( ( ICu[ii*Col+Col] < SLost ) && (ii<N1) ) ii++;
+               ResSL = ICu[ii*Col+Col];
+       }
+      else { while ( (IAl[ii*Col+Col] < SLost) && (ii<N1) ) ii++;
+               ResSL = IAl[ii*Col+Col];
+       }
+      if ( SLost > ResSL )
+       ResSL = Rnd (SLost, 2);
+    };
+  return ResSL;  	
+};	
+
+// ====================================================================================================================
+
+function IHeatmax(Square)	// === выбор максимального тока для заданного сечения по нагреву
+{ with (document) 
+    { var Imax;
+    ChangeJ();
+      ii = ICu[j];      // количество токов в столбце   
+      if ( getElementById("Metall").value == "cu")
+               { ii = ICu[j];      // количество токов в столбцe для медных проводников
+           if ( Square <= ICu[(ii)*Col] )  // заданное сечение меньше маскимального в таблице 
+                   { while ((ICu[(ii)*Col] > Square ) && ( ii > 0 )) ii--;  // искать сечение равное заданному
+                           Imax = ICu[(ii)*Col+j];
+               }
+            else { Imax = ICu[(ii)*Col+j]    // сечение превышает табличное, максимальное значение
+
+                 }	                       // в данном случае допустимо,т.к. еcть проверка на сечение по нагреву
+              SHeat = ICu[ii*Col];
+         if ( Square < ICu[Col] )
+            Imax = 0;
+             }
+        else {  ii = IAl[j];      // количество токов в столбц// для алюминиевых проводников
+             if ( Square <= IAl[ii*Col] )      // заданное сечение меньше маскимального в таблице  
+                     { while ((IAl[ii*Col] > Square ) && ( ii > 0 )) ii--;  // искать сечение равное заданному
+                           Imax = IAl[ii*Col+j];
+               }
+            else { Imax = IAl[ii*Col+j]    // сечение превышает табличное, максимальное значение
+                 }	                       // в данном случае допустимо,т.к. еcть проверка на сечение по нагреву
+                 SHeat = IAl[ii*Col];
+         if ( Square < IAl[Col] )
+            Imax = 0;
+           };
+    };
+  return Imax * Konp * KGround;    // Коррекция тока с учетом ОНП и температуры среды
+};
+// ====================================================================================================================
+
+function ILostmax(Square, Prc)	// === выбор максимального тока для заданного сечения по потерям
+{ with (document) 
+  { var Imax, ILmax, IHmax;
+    if (Phases >= 5) 
+          K=1.73; // для трехфазной цепи
+     else K=2;    // для однофазной цепи
+  ILmax = (Square*U*Prc) / (K*L*ro*CosFi*100);
+    return ILmax;
+  };  
+};
+
+// ====================================================================================================================function ChangeLost(Param)
+
+function ChangeLost() // изменена величина потерь
+{ with (document)
+    { U = getElementById("Voltage").value;
+    if ( getElementById("LostSelectorP").checked)  // заданы потери в процентах
+       { MLP = getElementById("MaxLostPercent").value
+       if( ( MLP >= 100) ||( MLP*0 != 0))
+                  { alert ( "ОШИБКА: Введено нечисловое значение (десятичный разделитель - точка) \n\n"+
+                        "или потери выходят за допустимые границы: ]0%,100%[ \n\n "+
+                        "определенное стандартом значение - 5%, \n "+
+                      "для компрессоров холодильных аппаратов - 2% \n")
+                    getElementById("MaxLostPercent").value="5";
+              getElementById("MaxLostPercent").focus();			   
+                  }				  
+             else { MLV = Rnd((U * MLP / 100), 2);
+              getElementById("MaxLostVoltage").value = MLV;
+                getElementById("MinVoltage").value = U-MLV;
+            }
+     };
+     if ( getElementById("LostSelectorV").checked) // заданы потери в вольтах
+      { MLV = getElementById("MaxLostVoltage").value
+      if (( MLV <= 0) || (U - MLV <= 0 ) ||(MLV*0 != 0) )
+                 { alert("ОШИБКА: потери выходят за допустимые границы: ] 0B .. " + Voltage.value + "В [ \n\n"+
+                   "или введено нечисловое значение (десятичный разделитель - точка) \n\n ");
+                   getElementById("MaxLostVoltage").value = ( U * MLP / 100 );
+             getElementById("MaxLostVoltage").focus();			   
+                 }				  
+            else { getElementById("MaxLostPercent").value = Rnd(((MLV / U) * 100), 2);
+               getElementById("MinVoltage").value = U - MLV;
+           };
+        };
+   if ( getElementById("LostSelectorU").checked) // задано минимальное напряжение на нагрузке 
+      { MV = getElementById("MinVoltage").value;
+      if ((MV <= 0) || (U - MV <= 0) ||(MV*0 != 0) )
+                 { alert("ОШИБКА: Введено нечисловое значение (десятичный разделитель - точка) \n\n"+
+                   "или минимальное напряжение меньше или равно 0 \n\n " + 
+                 "или минимальное напряжение больше или равно напряжению сети");
+                   getElementById("MinVoltage").value= Rnd(U*(1-MLP/100), 2);
+             getElementById("MinVoltage").focus();			   
+           }				  
+            else { getElementById("MaxLostPercent").value = Rnd((((U - MV) / U) * 100), 2);
+                 getElementById("MaxLostVoltage").value = U - MV;
+         };
+        };
+   Calc();
+   };
+};
+
+// ====================================================================================================================
+
+function ChangePI()   // изменена нагрузка
+{ with (document)
+  Calc();
+};
+
+// ====================================================================================================================
+
+function CalcDiametr(S)   // Вычисление диаметра провода по сечению
+{ with (document)
+  return Rnd( Math.sqrt (S * 4 / 3.14158), 2);
+};
+
+// ====================================================================================================================
+
+function CalcSquare(D)   // Вычисление сечения провода по диаметру
+{ with (document)
+  return (Rnd ( (D * D * 3.14158 / 4 ), 2));
+};
+
+// ====================================================================================================================
+
+function ChangeS()   // изменено сечение, расчет нагрузок
+{ with (document)
+  getElementById("Diametr").value = CalcDiametr ( getElementById("Square").value);
+  Calc();
+};
+
+// ====================================================================================================================
+
+function ChangeD()   // изменен диаметр, расчет нагрузок
+{ with (document)
+  getElementById("Square").value = CalcSquare ( getElementById("Diametr").value);
+  Calc();
+};
+
+// ====================================================================================================================
+
+function ChangeModeBreaker()   // изменен критерий выбора автоматического выключателя
+{ with (document)
+  Calc();
+};
+
+// ====================================================================================================================
+
+function ChangeWithBreaker()   // изменен учет выбора автоматического выключателя
+{ with (document)
+  Calc();
+};
+
+// ====================================================================================================================
+
+function Lmax(S,I,Prc)   // длина линии при заданных сечении и токе
+{ with (document)
+    { if (Phases >= 5) 
+             K=1.73
+        else K=2;
+    return Rnd((S*U*Prc)/(K*I*ro*CosFi*100), 1);
+  };
+};
+
+// ====================================================================================================================
+
+function Lost(L,S,I)   // потери в линии при заданных длине сечении и токе
+{ with (document)
+    { if (Phases >= 5) 
+             K=1.73
+        else K=2;
+    return Rnd((K*I*ro*L*100)/(S*U), 2);
+  };
+};
+
+// ====================================================================================================================
+
+function CalcRes (L, S)   // сопротивление линии при заданных длине и сечении
+{ with (document)
+    { 
+    return ro*L/S;
+  };
+};
+
+// ====================================================================================================================
+
+function CalcPrc (P1, P2, R)   // сопротивление линии при заданных длине и сечении
+{ with (document)
+    { 
+    return Rnd((P1-P2)*100/P2, R); // процент Р1 от Р2, округленный до R разрядов
+  };
+};
+
+// ====================================================================================================================
+
+function WKW ()   // возвращает единицу измерения мощности - Вт/Квт
+{ with (document)
+    { 
+  if (getElementById("KW").value == 1)
+          return "Вт"
+     else return "КВт"; 
+  };
+};
+
+// ====================================================================================================================
+
+function Calc () // Основные вычисления
+{ var KR;
+  with (document)
+    { U = getElementById("Voltage").value;
+      I = getElementById("Current").value;
+    CosFi = getElementById("CosF").value;
+    P = getElementById("Power").value;
+      L = getElementById("Length").value;
+    if ( L == "" ) L=0;
+    MLP = getElementById("MaxLostPercent").value;
+      Kz = 1 + getElementById("Kzapas").value/100;  // Расчет с запасом
+    KZdec =  1 - getElementById("Kzapas").value/100;  // Расчет с запасом
+    Kzmin = 1 - getElementById("Kzapas").value/100;
+      KBr = getElementById("KzBr").value;
+    
+    if (Phases >= 5) 
+             KR=1
+        else KR=2;
+
+    if ( getElementById("SelectorI").checked)  // расчет мощности
+              getElementById("Power").value = Rnd(CalcPower(I), 1)
+     else getElementById("Current").value = Rnd(CalcCurrent(P), 1);
+     
+    switch (getElementById("ModeProgram").value)
+      { case "Square":  { // нахождение нужного сечения по введенной нагрузке
+                        IKz = I*Kz;
+                        if (getElementById("ModeBreaker").value.search ("With") != -1)
+                              { // сечение по току с запасом и автомату
+                var IBreaker = ChoiceBreaker("GE",I*KBr)
+                SH = SquareHeat (Math.max (IKz,IBreaker));
+                SL = SquareLost (ChoiceBreaker("GE",I*KBr),L,MLP*KZdec*IBreaker/I);
+                //alert ("SL="+SL);
+                }
+                           else { // сечение по току
+                    SH = SquareHeat (IKz);  
+                SL = SquareLost (I,L,MLP*Kzmin);
+                }
+                        SKI   = "S (" + Rnd(IKz,1) + "A)";
+                        if (Out)
+                                Defoult ()
+                           else { 
+                                if ( SH > SL )
+                                        { 
+                                        ModeK = err6;
+                                      SK = SH;
+                                      }
+                                   else if ( SH == SL )
+                                                  { 
+                                                  ModeK = err7;
+                                                SK = SH;
+                                                }
+                                           else { 
+                                                  ModeK = err8;
+                                                SK = SL;
+                                      SKI = "S (" + Rnd(I, 1) + "A, " + Rnd(MLP*Kzmin, 1) + "%)";
+                                                };
+                                }; 
+                  getElementById("ModeKtxt").innerHTML = ModeK; // вывод критериев выбора
+
+                      getElementById("SKItxt").innerHTML   = "<nobr>"+SKI+"</nobr>";	// S (25A,5%) = 10мм2			
+                      getElementById("SKtxt").innerHTML    = SK+" мм2";
+              
+            LostK =  Lost (L, SK, I);	                     
+                        getElementById("InomKtxt").innerHTML = "("+ Rnd(I, 1) + "A, " + L + "м)"; // Delta (25A, 30м) = 0,5% 
+                      getElementById("LostKtxt").innerHTML = Rnd(LostK, 2) + " %";	
+
+                        ImaxK = Math.min (IHeatmax(SK),ILostmax(SK, MLP)); // вывод максимального тока и мощности
+
+                        if ( ImaxK*0 == 0 )
+                                getElementById("ImaxKtxt").innerHTML = Rnd(ImaxK, 1) + "А" + " / " + Rnd(CalcPower(ImaxK), 2)+WKW ()
+                           else getElementById("ImaxKtxt").innerHTML = "";
+
+                        if (( ImaxK*I*0 == 0) && (I*1 != 0 ))
+                                getElementById("KzKtxt").innerHTML = Rnd((ImaxK-I)*100/I, 2)+"%"
+                           else getElementById("KzKtxt").innerHTML = "";
+                        LmaxK = Lmax(SK,I,MLP*Kzmin);
+              getElementById("LmaxKItxt").innerHTML = "Lmax("+Rnd(I,1)+"A, "+Rnd(MLP*Kzmin,1)+"%)";
+                        if (LmaxK != "Infinity")
+                               getElementById("LmaxKtxt").innerHTML = Rnd(LmaxK, 1) + "м"
+              else getElementById("LmaxKtxt").innerHTML = "" ;	
+
+                        UoutK = U*(1-LostK/100);
+                        getElementById("UoutKtxt").innerHTML = Rnd(UoutK, 1) +" В";
+
+                        if ( getElementById("ModeBreaker").value.search ("Line") != -1 )
+                                { if ( ChoiceBreaker ( "LE", ImaxK) >= I )
+                                          getElementById("BreakerKtxt").innerHTML = BreakerTxt ( ChoiceBreaker ( "LE", ImaxK ))
+                                     else getElementById("BreakerKtxt").innerHTML = err9;
+                                }
+                           else { if ( ChoiceBreaker ( "GE", I ) <= ImaxK ) 
+                                     getElementById("BreakerKtxt").innerHTML = BreakerTxt ( ChoiceBreaker ( "GE", I ))
+                                else getElementById("BreakerKtxt").innerHTML = err9;
+                                }
+
+              getElementById("Square").value = SK;
+              getElementById("Diametr").value = CalcDiametr(SK);
+                        break;
+                      };
+      case "Load":    {  // ввод сечения, расчет допустимой нагрузки
+                            SK = getElementById("Square").value;
+                            SW = SK;
+    
+                            if (SK == "")  // сечение не введено
+                                    { getElementById("Current").value = "";
+                                    getElementById("Power").value = ""; 
+                                    Defoult ();
+                                  }
+                               else {                                      // расчеты с запасом
+                        IH = IHeatmax (SK);                  // ток по нагреву
+                          IL = ILostmax (SK, MLP);                  // ток по потерям
+                    //alert (" IL="+IL);
+                                if ( (IH <= IL) || (IL*0 != 0) )
+                                                { ModeK = err10;
+                                                  ImaxK = IH;
+                                                }
+                                     else { ModeK = err11;
+                                                  ImaxK = IL;
+                                                }
+                    ImaxK = ImaxK*Kzmin;
+         
+                    getElementById("ModeKtxt").innerHTML = ModeK; // по потерям/нагреву с запасом
+                    
+                    SKI = "S";
+                                      getElementById("SKItxt").innerHTML   = "<nobr>"+SKI+"</nobr>";	//S(xA)=
+                    getElementById("SKtxt").innerHTML    = SK+" мм2";				//	Ymm2
+                    
+                                      LostK = Lost (L, SK, ImaxK); 
+                                      if (LmaxK != "Infinity")
+                                         getElementById("InomKtxt").innerHTML = "("+ Rnd(ImaxK, 1) + "A, " + L + "м)";
+                                      if (LostK*0 != 0 ) 
+                             LostK  = 0;
+                                    getElementById("LostKtxt").innerHTML = Rnd(LostK, 2) + " %";	
+                                
+                                if ( ImaxK*0 == 0 )
+                                         getElementById("ImaxKtxt").innerHTML = Rnd(ImaxK, 1) + "А" + " / " + Rnd(CalcPower(ImaxK), 2)+WKW ()
+                                else getElementById("ImaxKtxt").innerHTML = "";
+      
+                                      getElementById("KzKtxt").innerHTML = "-"+getElementById("Kzapas").value + "%";
+                    
+                    LmaxK = Lmax(SK, ImaxK , MLP);
+                        getElementById("LmaxKItxt").innerHTML = "Lmax("+Rnd(ImaxK,1)+"A, "+Rnd(MLP, 1)+"%)";
+                                    getElementById("LmaxKtxt").innerHTML = Rnd(LmaxK, 1) + " м";	
+                    
+                                      UoutK = U*(1-LostK/100);
+                                      getElementById("UoutKtxt").innerHTML = Rnd(UoutK, 1) +" В";
+
+                                      getElementById("BreakerKtxt").innerHTML = BreakerTxt ( ChoiceBreaker ( "LE", ImaxK/KBr  ));
+                    getElementById("Current").value = Rnd(ImaxK, 3);
+                                      getElementById("Power").value =  Rnd(CalcPower(ImaxK), 3);
+                       }					  
+                          break;
+                      };
+          case "Control": { // ввод сечения и нагрузки, проверочный расчет  
+                            SK = getElementById("Square").value;
+              
+                            ModeK = err12;
+              getElementById("ModeKtxt").innerHTML = ModeK;
+              
+              SKI = "S";
+              getElementById("SKItxt").innerHTML   = SKI;
+              getElementById("SKtxt").innerHTML    = SK+" мм2";
+              
+              LostK = Lost (L, SK, I);
+              getElementById("InomKtxt").innerHTML = "("+ Rnd(I, 1) + "A, " + L + "м)";
+              if ( LostK <= MLP * Kzmin)					   
+                                   getElementById("LostKtxt").innerHTML = Rnd(LostK, 2) + " %";							
+                      else getElementById("LostKtxt").innerHTML =  "<div style='color: red;'>"+ Rnd(LostK, 2) + " %</div>";
+              
+              ImaxK = Math.min (IHeatmax(SK),ILostmax(SK, MLP));
+              ImaxK = ImaxK*Kzmin
+              if (( ImaxK*I*0 == 0) && (I*1 != 0 ))
+                                    { getElementById("ImaxKtxt").innerHTML = Rnd(ImaxK, 1) + "А" + " / " + Rnd(CalcPower(ImaxK), 2)+WKW ();
+                    getElementById("KzKtxt").innerHTML = Rnd((ImaxK-I)*100/I, 2)+"%";
+                          if ( Rnd(ImaxK, 2) < getElementById("Current").value)
+                           { getElementById("ImaxKtxt").innerHTML = "<div style='color: red;'>" + getElementById("ImaxKtxt").innerHTML + "</div>"	
+                       getElementById("KzKtxt").innerHTML = "<div style='color: red;'>" + getElementById("KzKtxt").innerHTML + "</div>"	
+                     }
+                        }  
+                           else { getElementById("ImaxKtxt").innerHTML = "";
+                        getElementById("KzKtxt").innerHTML = "";
+                  }
+
+              LmaxK = Lmax(SK,I, MLP*Kzmin);					        
+              getElementById("LmaxKItxt").innerHTML = "Lmax("+Rnd(I, 1)+"A, "+Rnd(MLP*Kzmin, 1)+"%)";
+                            if (LmaxK != "Infinity")
+                             if ( LmaxK >= getElementById("Length").value)
+                             getElementById("LmaxKtxt").innerHTML = Rnd(LmaxK, 1) + " м"
+                        else getElementById("LmaxKtxt").innerHTML = "<div style='color: red;'>"+ Rnd(LmaxK, 1) + " м</div>";
+                             
+                            if (LostK*0 != 0 ) LostK  = 0;
+                               UoutK = U*(1-LostK/100);
+                      getElementById("UoutKtxt").innerHTML = Rnd(UoutK, 1) +" В";
+               
+                        if ( getElementById("ModeBreaker").value.search ("Line") != -1 )
+                   { if ( ChoiceBreaker ( "LE", IHeatmax(SK)*Kzmin) >= I )
+                             getElementById("BreakerKtxt").innerHTML = BreakerTxt ( ChoiceBreaker ( "LE", IHeatmax(SK)*Kzmin ))
+                      else getElementById("BreakerKtxt").innerHTML = err9;
+                     // alert ( "IHeatmax="+IHeatmax(SK)+ "  Automat="+ChoiceBreaker ( "LE", IHeatmax(SK) )+ "   SK="+SK+"   I="+I + "   "+( ChoiceBreaker ( "LE", IHeatmax(SK) >= I) ));	  
+                   }
+                  else { if ( ChoiceBreaker ( "GE", I ) <= IHeatmax(SK) ) 
+                             getElementById("BreakerKtxt").innerHTML = BreakerTxt ( ChoiceBreaker ( "GE", I ))
+                      else getElementById("BreakerKtxt").innerHTML = err9;
+                   }   
+                          break;
+                      };
+        }; // switch
+              RK = Rnd(CalcRes (L*KR, SK), 5);
+              getElementById("RKItxt").innerHTML = "R(" + SK +"мм<sup>2</sup>," + L*KR + "м)";
+              getElementById("RKtxt").innerHTML = RK +" ом";
+    }; // with (document)
+};
+
+// ====================================================================================================================   
+
+function ChangeKz() // изменение запаса
+{ with (document)
+    { 
+    if (getElementById("ModeProgram").value == "Load")
+              {
+              Kz = 1 - getElementById("Kzapas").value/100;
+        if ( Kz <= 0 )
+           {
+             alert ( err13);
+                     getElementById("Kzapas").value = "";
+           getElementById("Kzapas").focus;
+           }
+        }
+     else Kz = 1 + getElementById("Kzapas").value/100;
+    Calc ();
+  };
+};
+
+// ====================================================================================================================   
+
+function ChangeModeProgram() // изменен режим работы программы
+{ with (document)
+    { switch (getElementById( "ModeProgram").value)
+       { case "Square":  { getElementById("TitleProgram").innerHTML = err3;
+                         getElementById("ModeZapas").innerHTML = " + ";
+               getElementById("Square").disabled = true;
+               getElementById("Diametr").disabled = true;							 
+               getElementById("Current").disabled = false;
+               getElementById("Power").disabled = false;
+               getElementById("SelectorI").disabled = false;
+               getElementById("SelectorP").disabled = false;
+               
+                             break;
+                         };
+         case "Load":    { getElementById("TitleProgram").innerHTML = err4;
+                         getElementById("ModeZapas").innerHTML = " - ";
+               getElementById("Square").disabled = false;
+               getElementById("Diametr").disabled = false;							 
+               getElementById("Current").disabled = true;
+               getElementById("Power").disabled = true;
+               getElementById("SelectorI").disabled = true;
+               getElementById("SelectorP").disabled = true;
+                             break;
+                         };
+         case "Control": { getElementById("TitleProgram").innerHTML = err5;
+                         getElementById("ModeZapas").innerHTML = " - ";
+               getElementById("Diametr").disabled = false;							 
+               getElementById("Square").disabled = false;
+               getElementById("Current").disabled = false;
+               getElementById("Power").disabled = false;
+               getElementById("SelectorI").disabled = false;
+               getElementById("SelectorP").disabled = false;
+                             break;
+                         };
+     };
+    };
+  Calc ();
+};
+               
+// ====================================================================================================================function ChangeLost(Param)
+
+function ChangeU() // изменено напряжение питания
+{ with (document)
+    { ChangeLost();
+    RstLost2 ();
+    getElementById ("User").value = "Other";
+  };
+  Calc ();	
+};
+               
+// ====================================================================================================================function ChangeLost(Param)
+
+function ChoiceBreaker( MM, Cur ) // Выбор автоматического выключателя
+                       // 0    1   2   3   4   5   6   7    8    9   10   11   12   13   14   15   16    17    18   19   20   21   22   23   24   25   26   27
+{ var CurBreaker = Array ( 27, 0.5,  1,  2,  3,  4,  5,  6,  10,  16,  20,  25,  32,  40,  50,  63,  80,  100,  125,  160, 200, 250, 320, 400, 500, 630, 800, 1000 );     // Токи срабатывания
+  var FirstN, n , LastN, OutBreaker;
+  with (document)
+    { 
+    OutBreaker = 0;
+    FirstN = 1;
+    LastN = CurBreaker [0];
+  if ( Cur <= CurBreaker [LastN])
+    switch (MM)
+            { 
+            case "LE": // ток автомата меньше или равен заданному току
+          {          
+                n = LastN; // в конец списка
+          while (( CurBreaker [n] > Cur) && (n>FirstN))
+                n--;
+        OutBreaker = CurBreaker [n];
+          break;
+              }
+          case "GE": 
+          {          // ток автомата больше или равен заданному току 
+                n = FirstN;  // в начало списка
+                while (( CurBreaker [n] < Cur ) && (n<LastN) ) 
+                    n++; 
+                OutBreaker = CurBreaker[n]; 
+                break;
+        }
+            case "LT": 
+          {          // ток автомата меньше заданного тока
+                n = LastN; // в конец списка
+          while (( CurBreaker [n] >= Cur) && (n>FirstN))
+                n--;
+        OutBreaker = CurBreaker [n];
+          break;
+        }
+          case "GT": 
+          {         // ток автомата больше заданного тока 
+                n = FirstN;  // в начало списка
+                while (( CurBreaker [n] <= Cur ) && (n<LastN) ) 
+                    n++; 
+                OutBreaker = CurBreaker[n]; 
+                break;
+        }
+            
+        }// switch 
+    }
+  return OutBreaker;
+};               
+
+// ====================================================================================================================function ChangeLost(Param)
+
+function ChangeKzBr()   // изменено поле ввода завпаса автомата
+{ with (document)
+      {
+    if ( (getElementById("KzBr").value < 1))
+       { alert ("ОШИБКА: К запаса автомата не введен, меньше единицы\n" +
+                  "или введено нечисловое значение (десятичный разделитель - точка) \n" + 
+          "Значение будет установлено по умолчанию равным " + KzBrDefoult);
+       getElementById("KzBr").value = KzBrDefoult;
+       getElementById("KzBr").focus();
+     };
+    if ( (getElementById("KzBr").value > 2))
+       { alert ("Предупреждение: К запаса автомата больше двух, что ошибкой не является, но\n" +
+                  "приведет к существенному завышению результата вычислений\n");
+       getElementById("KzBr").focus();
+     };
+
+    }
+Calc();
+};
+
+// ====================================================================================================================
+function BreakerTxt( Cur ) // Выбор автоматического выключателя
+{ var OutString;
+  with (document)
+    { if ( Cur == 0 )
+            OutString = err9;
+       else { if         (Phases <= 2) OutString = "1p / "
+               else if (Phases <= 4) OutString = "2p / " 
+               else                  OutString = "3p / ";
+                if (getElementById("CosF").value == 1)
+                    OutString = OutString + "B / " 
+               else OutString = OutString + "C / " ;
+              OutString = OutString +	Cur +"A";
+        }
+    }
+  return OutString;
+};               
+
+
+// ====================================================================================================================
+
+function RstLost()  
+{ with (document)
+   { //getElementById("Voltage").value = U0;
+     getElementById("LostKStxt").innerHTML = "";
+     NodeCur = 0;
+   getElementById("NodeCurtxt").innerHTML = NodeCur;	 
+   OutTableLost ("Clr");
+    }
+};
+
+// ====================================================================================================================function ChangeLost(Param)
+
+function ChangeRTGround(RT) // Учет грунта, в котором проложен кабель
+{ with (document)
+    { RT=RT*1;
+    switch (RT)
+    { case  (80): { KGround=1.05;
+                    break;
+                  };
+      case (120): { KGround=1;
+                    break;
+                  };
+      case (200): { KGround=0.87;
+                    break;
+                  };
+      case (300): { KGround=0.75;
+                    break;
+                  };
+    };
+      getElementById("KGroundtxt").innerHTML = "RT = " + RT+"см*°С/Вт = " + Rnd(100/RT, 2) + " Вт/(м*°С),<br>Imax = Iтабл * " + KGround;   	
+    };
+ Calc ();
+};
+</script>
+<div class="content" onload="Start(); document.getElementById(&quot;Current&quot;).focus()">
+<div class="content__container">
+
+<div class="content__header">
+<h1 class="content__title">
+Калькулятор кабеля </h1>
+</div>
+
+<div class="content__row">
+<div class="typo">
+<BODY bgColor="#FFF" onload="Start(); document.getElementById(&quot;Current&quot;).focus()">
+
+<div name="main">
+<table title="Global" border="0" bgcolor="#FFF" align="center">
+<tr>
+<td>
+<div style="FONT-WEIGHT: bold; FONT-SIZE: 25px; TEXT-ALIGN: left" align="center"><span id="TitleProgram"></span>&nbsp;</div>
+</td>
+</tr>
+<tr>
+<td>
+<table border="1" bgcolor="#f2f6f9" style="background:#f2f6f9">
+<TR>
+<TD colspan="4" align="left">
+<SELECT size="1" id="ModeProgram" onchange="ChangeModeProgram();" title="Режим работы программы">
+<OPTION value="Square" selected> &nbsp; Cечение провода по нагреву и потерям напряжения <OPTION value="Load"> &nbsp; Нагрузочная способность провода заданного сечения &nbsp;
+<OPTION value="Control"> &nbsp; Расчет потерь и максимальных параметров линии </OPTION>
+</SELECT>&nbsp;&nbsp;
+</TD>
+</TR>
+<TR>
+<TD valign="top" width="120" align="left">
+<table border="0" width="100%">
+<tr>
+<td colspan="3">
+<SELECT size="1" id="ModeBreaker" onchange=" ChangeModeBreaker()" title="Автомат может защищать линию или нагрузку, участвовать в расчете или нет">
+<OPTION value="Line"> &nbsp; Автомат по линии <OPTION value="Load"> &nbsp; Автомат по нагрузке &nbsp;
+<OPTION value="LineWith" selected> &nbsp; С учетом автомата по линии <OPTION value="LoadWith"> &nbsp; С учетом автомата по нагрузке &nbsp;
+</OPTION>
+</SELECT>
+</td>
+</tr>
+<tr>
+<td colspan="3">
+<select name id="Phase" size="1" title="количество фаз" onchange=" ChangePhase()">
+<OPTION value="1"> &nbsp; 1 фаза, Uф, &nbsp;( L+N )
+<OPTION value="2" selected> &nbsp; 1 фаза, Uф, &nbsp;( L+N+PE )
+<OPTION value="3"> &nbsp; 2 фазы, Uл, &nbsp;( L1+L2 )
+<OPTION value="4"> &nbsp; 2 фазы, Uл, &nbsp;( L1+L2+PE )
+<OPTION value="5"> &nbsp; 3 фазы, Uл, &nbsp;( L123 )
+<OPTION value="6"> &nbsp; 3 фазы, Uл, &nbsp;( L123+PE )
+<OPTION value="7"> &nbsp; 3 фазы, Uл, &nbsp;( L123+N )
+<OPTION value="8"> &nbsp; 3 фазы, Uл, &nbsp;( L123+N+PE )
+</OPTION>
+</SELECT>
+</td>
+</tr>
+<tr>
+<td align="left">&nbsp;Напряжение:</td>
+<td></td>
+<td><input type="text" id="Voltage" value=" 230" size="5" OnKeyUp=" ChangeU ()" title="фазное напряжение для однофазной сети и линейное для трехфазной">В,&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td align="left">&nbsp;Ток:</td>
+<td>
+<INPUT type="radio" id="SelectorI" name="Selector" CHECKED value="Current" onchange=" Calc()" title="Фиксатор ввода тока">
+</td>
+<td>
+<input type="text" id="Current" size="5" maxlength="5" onClick="getElementById(&quot;SelectorI&quot;).checked = true;" onSelect="getElementById(&quot;SelectorI&quot;).checked = true;" OnKeyUp=" ChangePI()" onchange=" ChangePI()" title="Ток нагрузки">А
+</td>
+</tr>
+<tr>
+<td align="left">&nbsp;Мощность:</td>
+<td>
+<INPUT type="radio" id="SelectorP" name="Selector" value="Power" onchange=" Calc()" title="Фиксатор ввода мощности">
+</td>
+<td><nobr>
+<INPUT type="text" id="Power" size="5" maxlength="5" onClick="getElementById(&quot;SelectorP&quot;).checked = true;" onSelect="getElementById(&quot;SelectorP&quot;).checked = true;" OnKeyUp=" ChangePI()" onchange=" ChangePI()" title="Мощность нагрузки">
+<SELECT size="1" id="KW" onchange=" Calc()" title="Единицы измерения мощности - Вт/КВт">
+<OPTION value="1000" selected> КВт
+<OPTION value="1"> Вт
+</OPTION>
+</SELECT>
+</nobr>
+</td>
+</tr>
+<tr>
+<td align="left">&nbsp;КПД*cos(&phi;):</td>
+<td></td>
+<td>
+<INPUT type="text" id="CosF" size="5" value="  0.72" OnKeyUp=" ChangeCos()" title="косинус сдвига фаз напряжения и тока">
+</td>
+</tr>
+<tr>
+<td align="left">&nbsp;Сечение:</td>
+<td></td>
+<td>
+<nobr>
+<INPUT type="text" id="Square" size="5" maxlength="5" OnKeyUp=" ChangeS()" title="Сечение проводника. Поле результата с запасом или ввода сечения"> мм<sup>2</sup>
+</nobr>
+</td>
+</tr>
+<tr>
+<td align="left">&nbsp;Диаметр:</td>
+<td></td>
+<td>
+<INPUT type="text" id="Diametr" size="5" maxlength="5" OnKeyUp=" ChangeD()" title="Диаметр проводника."> мм
+</td>
+</tr>
+<tr>
+<td colspan="3">
+<SELECT size="1" id="User" onchange=" ChangeUser()" title="Ходовые нагрузки">
+<OPTION value="Мotor3400"> &nbsp; Двигатель 3x400В
+<OPTION value="Мotor230"> &nbsp; Двигатель 230В
+<OPTION value="Мotor"> &nbsp; Двигатель <OPTION value="Нeater3400"> &nbsp; ТЭН,лампа 3x400В
+<OPTION value="Нeater400"> &nbsp; ТЭН,лампа 400В
+<OPTION value="Нeater230"> &nbsp; ТЭН,лампа 230В
+<OPTION value="Heater12"> &nbsp; ТЭН,лампа, 12В
+<OPTION value="Heater12"> &nbsp; Светодиоды,=12В
+<OPTION value="Нeater"> &nbsp; ТЭН,лампа <OPTION value="Мotor230"> &nbsp; Кондиционер <OPTION value="Мotor230"> &nbsp; Стиральная машина <OPTION value="Мotor230"> &nbsp; Холодильник <OPTION value="Computer"> &nbsp; Комп.,телевизор <OPTION value="LuminDr"> &nbsp; Люмин.дросс. 230В
+<OPTION value="LuminEl"> &nbsp; Люмин.элктрн. 230В
+<OPTION value="Other" selected> &nbsp; Нет автоподстановки </OPTION>
+</SELECT>
+</td>
+</tr>
+</table>
+</TD>
+<TD bgColor="#cccccc">
+<table border="0" id="tableK" title="Результаты при расчете с запасом.                                    Рекомендуется для применения " width="100%">
+<tr>
+<td align="center"><SPAN id="ModeKtxt"></SPAN></td>
+<td align="left"><SPAN id="ModeZapas"> </SPAN></td>
+<td align="left"><INPUT type="text" id="Kzapas" size="3" maxlength="3" value=" 30" OnKeyUp=" ChangeKz()" title="Запас по току. Заданный ток будет увеличен на это значение.">%
+</td>
+</tr>
+<tr>
+<td align="left" width="130"><strong>&nbsp;<SPAN id="SKItxt"></SPAN></strong></td>
+<td align="center" width="10">=</td>
+<td align="left" width="110"><strong><SPAN id="SKtxt"> </SPAN></strong></td>
+</tr>
+<tr>
+<td align="left"><nobr>&nbsp;<strong>&Delta;&nbsp;<span id="InomKtxt"></span></strong></nobr></td>
+<td align="center">=</td>
+<td align="left"><strong><SPAN id="LostKtxt"> </SPAN></strong></td>
+</tr>
+<tr>
+<td align="left">&nbsp;Imax / Pmax</td>
+<td align="center">=</td>
+<td align="left"><SPAN id="ImaxKtxt"> </SPAN></td>
+</tr>
+<tr>
+<td align="left">&nbsp;Запас</td>
+<td align="center">=</td>
+<td align="left"><SPAN id="KzKtxt"> </SPAN></td>
+</tr>
+<tr>
+<td align="left">&nbsp;<SPAN id="LmaxKItxt"></td>
+<td align="center">=</td>
+<td align="left"><SPAN id="LmaxKtxt"> </SPAN></td>
+</tr>
+<tr>
+<td align="left">&nbsp;Uвых</td>
+<td align="center">=</td>
+<td align="left"><SPAN id="UoutKtxt"> </SPAN></td>
+</tr>
+<tr>
+<td align="left">
+<nobr>&nbsp;Автомат&nbsp;*&nbsp;
+<INPUT type="text" id="KzBr" size="3" maxlength="5" value=" 1.15" OnKeyUp=" ChangeKzBr()" title="Запас по току автомата - Расчетный ток будет увеличен на это значение."></nobr>
+</td>
+<td align="center">=</td>
+<td align="left"><SPAN id="BreakerKtxt"></SPAN></td>
+</tr>
+<tr>
+<td align="left">&nbsp;<SPAN id="RKItxt"></SPAN></td>
+<td align="center">=</td>
+<td align="left"><SPAN id="RKtxt"></SPAN></td>
+</tr>
+</table>
+</TD>
+</TR>
+<TR>
+<TD align="right" valign="top">
+<table>
+<tr align="center">
+<td colspan="3">Допустимые потери</td>
+</tr>
+<tr>
+<td align="right"></td>
+<td align="center"> <INPUT type="radio" id="LostSelectorP" name="LostSelector" CHECKED value="Percent" title="Фиксатор ввода потерь в процентах">
+</td>
+<td align="left"> <INPUT type="text" id="MaxLostPercent" size="6" value="  5" onClick="getElementById(&quot;LostSelectorP&quot;).checked = true" ; onSelect="getElementById(&quot;LostSelectorP&quot;).checked = true;" onkeyup=" ChangeLost()" title="Максимально допустимые потери в процентах">%&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td align="right">или</td>
+<td align="center"> <INPUT type="radio" id="LostSelectorV" name="LostSelector" value="Voltage" title="Фиксатор ввода потерь в вольтах"> </td>
+<td align="left"><INPUT type="text" id="MaxLostVoltage" size="6" value="  20" onClick="getElementById(&quot;LostSelectorV&quot;).checked = true" ; onSelect="getElementById(&quot;LostSelectorV&quot;).checked = true;" onkeyup=" ChangeLost()" title="Максимально допустимые потери в вольтах">В</td>
+</tr>
+<tr>
+<td align="right">или U<sub>min</sub>:</td>
+<td align="center"><INPUT type="radio" id="LostSelectorU" name="LostSelector" value="MinVoltage" title="Фиксатор ввода минимального напряжения"></td>
+<td align="left"><INPUT type="text" id="MinVoltage" size="6" value="  380" onClick="getElementById(&quot;LostSelectorU&quot;).checked = true" ; onSelect="getElementById(&quot;LostSelectorU&quot;).checked = true;" onkeyup=" ChangeLost()" title="Минимально допустимое напряжение питания нагрузки">В</td>
+</tr>
+</table>
+</TD>
+<td align="center" valign="top">
+<table border="0">
+<tr>
+<td align="left">Длина</td>
+<td align="left">Материал</td>
+<td align="left">ОНП</td>
+</tr>
+<tr>
+<td align="left">
+<INPUT id="Length" size="6" value maxlength="7" OnKeyUp=" Calc()" title="Длина трассы в одном направлении - от источника до нагрузки">м
+</td>
+<td align="left">
+<SELECT onchange="ChangeTable();" size="1" id="Metall" title="Материал проводника">
+<OPTION value="cu" selected> &nbsp; Медь <OPTION value="al"> &nbsp; Алюминий&nbsp;
+</OPTION>
+</SELECT>
+</td>
+<td align="left">
+<INPUT type="text" id="NumWires" size=" 3" value=" 2" onkeyup="ChangeNumLoadWires()" onblur=" ChangeNumLoadWires()" title="Одновременно нагруженых проводников">
+</td>
+</tr>
+<tr>
+<td colspan="3" align="left">
+<SELECT id="Tip" onchange=" ChangeTip()" size="1" title="Вид прокладки трассы">
+<OPTION value="tWir_N" selected> &nbsp; ПУЭ, Кабель с ПВХ изоляцией в лотке &nbsp;
+<OPTION value="tWir_tube"> &nbsp; ПУЭ, 1-ж. провод в трубе,пучке,коробе &nbsp;
+<OPTION value="tWir_lotok"> &nbsp; ПУЭ, 1-ж. провод в лотке, свободно <OPTION value="tCabPUE_1air"> &nbsp; ПУЭ, 1-ж. кабель в воздухе <OPTION value="tCabPUE_air"> &nbsp; ПУЭ, N-ж. кабель в воздухе <OPTION value="tCabPUE_earth"> &nbsp; ПУЭ, N-ж. кабель в земле <OPTION value="tShn"> &nbsp; ПУЭ, Шнур соединительный <OPTION value="tCabGOST_1air"> &nbsp; ГОСТ 16442-80, 1-ж. кабель в воздухе <OPTION value="tCabGOST_1earth"> &nbsp; ГОСТ 16442-80, 1-ж. кабель в земле <OPTION value="tCabGost_air"> &nbsp; ГОСТ 16442-80, N-ж. кабель в воздухе <OPTION value="tCabGOST_earth"> &nbsp; ГОСТ 16442-80, N-ж. кабель в земле </OPTION>
+</SELECT>
+</td>
+</tr>
+<tr>
+<td colspan="3" align="center"><span id="Tabletxt"></span></td>
+</tr>
+<tr>
+<td colspan="3" align="left">
+<SELECT size="1" id="RTGround" onchange=" ChangeRTGround(getElementById ('RTGround').value)" title="Теплопроводность грунта и его виды, Вт/(м*°С)">
+<OPTION value="80 "> &nbsp; песчано-глинистая почва вл. > 1%&nbsp;
+<OPTION value="80 "> &nbsp; Песок влажностью > 9%&nbsp;
+<OPTION value="120" selected> &nbsp; Нормальные почва и песок вл. 7-9%&nbsp;
+<OPTION value="120"> &nbsp; песчано-глинистая почва вл. 12-14%&nbsp;
+<OPTION value="200"> &nbsp; Песок влажностью от 4 до 7%&nbsp;
+<OPTION value="200"> &nbsp; песчано-глинистая почва вл. 8-12%&nbsp;
+<OPTION value="300"> &nbsp; Песок влажностью до 4 %&nbsp;
+<OPTION value="300"> &nbsp; Каменистая почва&nbsp;
+</OPTION>
+</SELECT>
+</td>
+</tr>
+<tr>
+<td colspan="3" align="center"><span id="KGroundtxt"></span></td>
+</tr>
+</table>
+</td>
+</TR>
+</TABLE>
+</td>
+</tr>
+</table>
+</div>
+<span id="Debug"></span>
+</div>
+<div class="typo"><h2 style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Кабельный калькулятор. Как произвести расчет сечения кабеля или провода?</span></h2>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Электрический калькулятор, введение.</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Электрический кабель &ndash; это основа электросетей, без него невозможно устройство энергопитающей структуры. Если вам необходимо провести новую проводку, или пришло время заменить старую, необходимо знать основы <strong>расчета мощности кабеля по сечению</strong>. Для чего?</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Правильный расчет кабеля питания &ndash; основа безопасности. Если диаметр проводника недостаточен, а нагрузка на кабель высока, последствия могут быть весьма плачевные. Под её воздействием металлическая часть нагревается, что ведёт к оплавлению изоляции и короткому замыканию. В такой ситуации может возникнуть пожар. Чтобы избежать подобных последствий, подойдём к выбору электропроводки профессионально.</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">В конце статьи вы сможете произвести самостоятельно расчёт кабеля в программе калькуляторе.</span></p>
+<h3 style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Формула расчета сечения кабеля, как рассчитать нагрузку?</span></h3>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Для каждого сечения существует допустимая токовая нагрузка. Например: если нам нужен кабель для того, чтобы подключить одну лампочку, нагрузка на провод, или сила тока, проходящего по проводнику, будет равняться мощности потребления данной лампочки. Это может быть 100 Вт, или (если вы используете новейшие светодиодные осветительные приборы) всего 6 Вт. Таким образом, даже на примере освещения, мы видим, что разница в нагрузке может быть ощутимой. Однако от домашней электросети питается не одна лампочка. Как правило, это целый список бытовых приборов. Чтобы рассчитать нагрузку на провод и выяснить необходимое сечение, нужно знать, сколько электроэнергии может потребляться в том случае, когда все они подключены. Итак, чтобы расчитать сечение провода,&nbsp;нам понадобится&nbsp;таблица. </span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Расчет потребляемой мощности электроприборов.</span></p>
+<table border="1.5">
+<tbody>
+<tr>
+<td width="158">
+<p><span style="font-family: arial, helvetica, sans-serif;">Электроприбор</span></p>
+</td>
+<td width="177">
+<p><span style="font-family: arial, helvetica, sans-serif;">Потребляемая мощность в Вт</span></p>
+</td>
+</tr>
+<tr>
+<td width="158">
+<p><span style="font-family: arial, helvetica, sans-serif;">Холодильник</span></p>
+</td>
+<td width="177">
+<p><span style="font-family: arial, helvetica, sans-serif;">50</span></p>
+</td>
+</tr>
+<tr>
+<td width="158">
+<p><span style="font-family: arial, helvetica, sans-serif;">Электроплита</span></p>
+</td>
+<td width="177">
+<p><span style="font-family: arial, helvetica, sans-serif;">1000</span></p>
+</td>
+</tr>
+<tr>
+<td width="158">
+<p><span style="font-family: arial, helvetica, sans-serif;">Микроволновка</span></p>
+</td>
+<td width="177">
+<p><span style="font-family: arial, helvetica, sans-serif;">1000</span></p>
+</td>
+</tr>
+<tr>
+<td width="158">
+<p><span style="font-family: arial, helvetica, sans-serif;">Электрический чайник</span></p>
+</td>
+<td width="177">
+<p><span style="font-family: arial, helvetica, sans-serif;">1200</span></p>
+</td>
+</tr>
+<tr>
+<td width="158">
+<p><span style="font-family: arial, helvetica, sans-serif;">Посудомоечная машина</span></p>
+</td>
+<td width="177">
+<p><span style="font-family: arial, helvetica, sans-serif;">600</span></p>
+</td>
+</tr>
+<tr>
+<td width="158">
+<p><span style="font-family: arial, helvetica, sans-serif;">Мультиварка</span></p>
+</td>
+<td width="177">
+<p><span style="font-family: arial, helvetica, sans-serif;">1400</span></p>
+</td>
+</tr>
+<tr>
+<td width="158">
+<p><span style="font-family: arial, helvetica, sans-serif;">Стиральная машина</span></p>
+</td>
+<td width="177">
+<p><span style="font-family: arial, helvetica, sans-serif;">300</span></p>
+</td>
+</tr>
+<tr>
+<td width="158">
+<p><span style="font-family: arial, helvetica, sans-serif;">Бойлер</span></p>
+</td>
+<td width="177">
+<p><span style="font-family: arial, helvetica, sans-serif;">2500</span></p>
+</td>
+</tr>
+<tr>
+<td width="158">
+<p><span style="font-family: arial, helvetica, sans-serif;">Утюг</span></p>
+</td>
+<td width="177">
+<p><span style="font-family: arial, helvetica, sans-serif;">1500</span></p>
+</td>
+</tr>
+<tr>
+<td width="158">
+<p><span style="font-family: arial, helvetica, sans-serif;">Компьютер</span></p>
+</td>
+<td width="177">
+<p><span style="font-family: arial, helvetica, sans-serif;">400</span></p>
+</td>
+</tr>
+<tr>
+<td width="158">
+<p><span style="font-family: arial, helvetica, sans-serif;">Телевизор</span></p>
+</td>
+<td width="177">
+<p><span style="font-family: arial, helvetica, sans-serif;">150</span></p>
+</td>
+</tr>
+<tr>
+<td width="158">
+<p><span style="font-family: arial, helvetica, sans-serif;">LED телевизор</span></p>
+</td>
+<td width="177">
+<p><span style="font-family: arial, helvetica, sans-serif;">75</span></p>
+</td>
+</tr>
+<tr>
+<td width="158">
+<p><span style="font-family: arial, helvetica, sans-serif;">Освещение</span></p>
+</td>
+<td width="177">
+<p><span style="font-family: arial, helvetica, sans-serif;">400</span></p>
+</td>
+</tr>
+<tr>
+<td width="158">
+<p><span style="font-family: arial, helvetica, sans-serif;">LED освещение</span></p>
+</td>
+<td width="177">
+<p><span style="font-family: arial, helvetica, sans-serif;">30</span></p>
+</td>
+</tr>
+<tr>
+<td width="158">
+<p><span style="font-family: arial, helvetica, sans-serif;">Пылесос</span></p>
+</td>
+<td width="177">
+<p><span style="font-family: arial, helvetica, sans-serif;">850</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Кабельный калькулятор. Расчёт кабеля по мощности.<br/></span></h3>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">В ней дана приблизительная мощность каждого бытового прибора. Следует помнить, что это средние цифры, точные можно узнать из спецификации каждой конкретной модели. Таблица, тем не менее, даёт нам некоторое представление о нагрузке, которую испытывает электрокабель, если все приборы включены в сеть. Разумеется, такое в быту, скорее всего, не случится, но мы говорим о расчёте оптимального сечения, поэтому учитываются даже исключительные варианты. Итак, приблизительный расход электроэнергии в час составляет 10900 &ndash; 11350 Вт. Принято брать большее значение и дополнительно добавлять некий запас мощности, например на случай непредвиденного подключения электрообогревателя зимой (+2000 Вт). Мы примем за базовую цифру 14&nbsp;000 Вт.</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Чтобы рассчитать силу тока для однофазной сети (220) пользуемся формулой: &nbsp;<img src="formyla-dlya-rascheta-silu-toka-220.jpg" alt="Формула для рассчета силы тока для однофазной сети" caption="false" width="81" height="44" /></span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Для трёхфазной (380):&nbsp;<img src="formyla-dlya-rascheta-silu-toka-380v.jpg" alt="Формула для рассчета силы тока для однофазной сети" width="93" height="37" /></span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Где: Р - общая мощность электрических приборов (мы взяли 14000 Вт)</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; U - напряжение сети (220 V);</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; К<sub>и</sub>= 0.75;</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cos<em>&phi;</em> &ndash; коэффициент, который для бытовых электрических приборов равен 1.</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif; font-size: 14pt;">Кабельный калькулятор. Расчёт кабеля по мощности. Как это делалось раньше?</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Зная максимальную нагрузку и силу тока, инженер рассчитывал сечение проводки с помощью таблиц, которые остаются актуальными и на сегодняшний день: они являются точными и основаны на действующих ГОСТах.&nbsp;</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">ПУЭ, Таблица 1.3.4. Допустимый длительный ток для проводов и шнуров с резиновой и поливинилхлоридной изоляцией с медными жилами.</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">ПУЭ, Таблица 1.3.6. Допустимый длительный ток для проводов с медными жилами с резиновой изоляцией в металлических защитных оболочках и кабелей с медными жилами с резиновой изоляцией в свинцовой, поливинилхлоридной, найритовой или резиновой оболочке, бронированных и небронированных.</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">ПУЭ, Таблица 1.3.8. Допустимый длительный ток для переносных шланговых легких и средних шнуров, переносных шланговых тяжелых кабелей, шахтных гибких шланговых, прожекторных кабелей и переносных проводов с медными жилами.</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">ГОСТ 16442-80, Таблица 23. Допустимые токовые нагрузки кабелей до 3КВ включ. с медными жилами с изоляцией из полиэтилена и поливинилхлоридного пластиката, А.</span></p>
+<p style="text-align: justify;">
+<span style="font-family: arial, helvetica, sans-serif;"><strong><br/></strong></span></p>
+<p style="text-align: justify;">&nbsp;</p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Расчет провода по мощности. Современные программы расчёта разработаны для того, чтобы максимально упростить задачу. Имея вводные данные, такие как желаемый материал проводника (медь или алюминий) и максимальное потребление электроэнергии (а, следовательно, силу тока), можно узнать требуемое сечение кабеля для сети 220V или 380V.</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;"><strong>Программа расчёта кабеля</strong> использует формулы, алгоритмы и математические значения, выдавая в окошечке готовый результат, понятный простому обывателю. Учитываются все параметры электросети, такие как:</span></p>
+<ul style="text-align: justify;">
+<li><span style="font-family: arial, helvetica, sans-serif;">постоянный или переменный ток;</span></li>
+<li><span style="font-family: arial, helvetica, sans-serif;">материал проводника;</span></li>
+<li><span style="font-family: arial, helvetica, sans-serif;">максимальная суммарная мощность;</span></li>
+<li><span style="font-family: arial, helvetica, sans-serif;">напряжение;</span></li>
+<li><span style="font-family: arial, helvetica, sans-serif;">коэффициент мощности;</span></li>
+<li><span style="font-family: arial, helvetica, sans-serif;">способ прокладки: воздушная или подземная;</span></li>
+<li><span style="font-family: arial, helvetica, sans-serif;">длина кабеля.</span></li>
+</ul>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">&nbsp;</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif; font-size: 14pt;">Вкратце пройдёмся по приведённым терминам</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Ток: бывает постоянный и переменный. Постоянный получается в результате химической реакции (батареи, аккумуляторы). В быту и на производстве чаще используется переменный. Он годится для передачи электроэнергии на большие расстояния, дешевле в использовании и практически все электроприборы адаптированы для использования переменного тока.</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Напряжение: это величина, характеризующая величину работы тока за отрезок времени (1 сек) на ограниченном участке.</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Мощность: величина производимой работы, сопровождается выделением тепловой энергии.</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">КПД*cos(&phi;): коэффициент, применяемый в расчётах сечения кабеля и др.</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Сечение: площадь проводящей части кабеля на поперечном срезе.</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Диаметр: поперечный размер кабеля с учётом изоляции.</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Допустимые потери: при передаче тока по кабелю часть его теряется благодаря такому параметру, как сопротивление. Существуют стандарты, характеризующие допустимую величину потерь, превышение которых служит поводом для проверки состояния электросети. Каждому металлу свойственно собственное сопротивление, соответственно допустимые потери, скажем, для медного проводника и алюминиевого, будут разными.</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">ОНП: одновременно нагруженные проводники.</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Материал: металл, из которого выполнены жилы провода.</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;"><strong>&nbsp;</strong></span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif; font-size: 14pt;">Далее рассмотрим проводимость</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Проводимость представляет собой способность какого-либо объекта проводить электрический ток. Кроме того, проводимостью называют и физическую величину, которая характеризует упомянутую способность. Данная величина также является обратной удельному сопротивлению. Рассчитывается она, как правило, при помощи специальных электроприборов.</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Поскольку основной единицей сопротивления является Ом, а рассматривая нами величина обратна ей, то она будет равняться 1 См = 1 Ом<sup> -1</sup>, где См &ndash; Сименс или S (в международной системе).</span></p>
+<p style="text-align: justify;"><span style="font-family: arial, helvetica, sans-serif;">Проводимость различных объектов неодинакова. Например, среди металлов, пожалуй, лучшей проводимостью обладают серебро, а также медь. Это связано с особенностью структуры их атомов, которые позволяют электронам свободнее перемещаться.</span></p>
+	</div>
+</div>
+
+</div>
+</div>
+
+
+	
+
+</body>
+</html>
