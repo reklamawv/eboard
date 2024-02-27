@@ -1,0 +1,358 @@
+
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru-ru" lang="ru-ru" dir="ltr">
+	<head>
+	  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор количества ламп</title>
+	  <script src="https://vk.com/js/api/mobile_sdk.js"  type="text/javascript"></script>
+	  
+	<style type="text/css">
+	body {
+      font: 14px/18px Open Sans; 
+      line-height: 18px;
+      color: #000000; }
+
+	h1, h2, h3, h4, h5, h6 { font-family: Arial, Helvetica, sans-serif; }
+
+	h1 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h2 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h3 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h4 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h5 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h6 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	.ot-menu a {
+		
+		
+	}
+	.ot-menu a:hover {
+		
+	}
+
+.form-horizontal .control-label{width:250px; !important; }
+	.auto-style20 {
+	background-color: #FF0000;
+}
+.auto-style21 {
+	background-color: #FFFF00;
+}
+
+ 
+.auto-style1 {
+	text-align: left;
+}
+.auto-style2 {
+	text-align: right;
+}
+.auto-style3 {
+	text-align: center;
+	font-weight: bold;
+	color: #ff0000;
+	font-size: x-large;
+}
+ 
+	</style>
+	
+<body style="background: rgb(234,255,215); background: linear-gradient(90deg, rgba(244,255,235,1) 0%, rgba(239,255,252,1) 52%, rgba(206,248,255,1) 100%);">
+<script language="javascript">
+            VK.init({
+              apiId: 51858291
+            });
+            </script>
+			
+ 
+
+<script type="text/javascript" language="javascript"> 
+
+
+function ff1() {
+if (document.getElementById('tiplamp').value==1) {
+                               document.getElementById('moschnost1').style.display=""
+                               document.getElementById('moschnost2').style.display="none"
+                               document.getElementById('moschnost3').style.display="none"
+                               document.getElementById('image2').style.display=""
+                               document.getElementById('image3').style.display="none"
+                               document.getElementById('image4').style.display="none"
+                               
+                               }
+if (document.getElementById('tiplamp').value==2) {
+                               document.getElementById('moschnost1').style.display='none'
+                               document.getElementById('moschnost2').style.display=""
+                               document.getElementById('moschnost3').style.display="none"
+                               document.getElementById('image2').style.display="none"
+                               document.getElementById('image3').style.display=""
+                               document.getElementById('image4').style.display="none"
+                               
+                               }
+if (document.getElementById('tiplamp').value==3) {
+                               document.getElementById('moschnost1').style.display="none"
+                               document.getElementById('moschnost2').style.display="none"
+                               document.getElementById('moschnost3').style.display=""
+                               document.getElementById('image2').style.display="none"
+                               document.getElementById('image3').style.display="none"
+                               document.getElementById('image4').style.display=""
+                               
+                               }
+} 
+
+
+function r1() {
+
+var dlina=+document.getElementById('dlina').value;
+var shirina=+document.getElementById('shirina').value; 
+var visotaH=+document.getElementById('visotaH').value;
+var visotaH1=+document.getElementById('visotaH1').value;
+var pom=+document.getElementById('pom').value;
+var fon=+document.getElementById('fon').value;
+
+var tiplamp=+document.getElementById('tiplamp');
+var moschnost1=+document.getElementById('moschnost1');
+var moschnost2=+document.getElementById('moschnost2');
+var moschnost3=+document.getElementById('moschnost3');
+
+if (document.getElementById('tiplamp').value==1) {lumen = document.getElementById('moschnost1').value * 16; }
+if (document.getElementById('tiplamp').value==2) {lumen = document.getElementById('moschnost2').value *105; }
+if (document.getElementById('tiplamp').value==3) {lumen = document.getElementById('moschnost3').value *210; }
+
+S = dlina * shirina;
+fi = S / (visotaH-visotaH1)/(dlina+shirina);
+
+if (fon==5) {
+              if (fi<0.6) u = 0.33;
+              if (fi>=0.6 && fi<0.8) u = 0.33 + (fi-0.6)*(0.41-0.33)/(0.8-0.6);
+        if (fi>=0.8 && fi<1.0) u = 0.41 + (fi-0.8)*(0.47-0.41)/(1.0-0.8);
+        if (fi>=1.0 && fi<1.25) u = 0.47 + (fi-1.0)*(0.53-0.47)/(1.25-1.0);
+        if (fi>=1.25 && fi<1.5) u = 0.53 + (fi-1.25)*(0.58-0.53)/(1.5-1.25);
+        if (fi>=1.5 && fi<2.0) u = 0.58 + (fi-1.5)*(0.65-0.58)/(2.0-1.5);
+        if (fi>=2.0 && fi<2.5) u = 0.65 + (fi-2.0)*(0.7-0.65)/(2.5-2.0); 
+        if (fi>=2.5 && fi<3.0) u = 0.7 + (fi-2.5)*(0.64-0.7)/(3.0-2.5);
+        if (fi>=3.0 && fi<4.0) u = 0.64 + (fi-3.0)*(0.79-0.64)/(4.0-3.0);
+        if (fi>=4.0 && fi<5.0) u = 0.79 + (fi-4.0)*(0.83-0.79)/(5.0-4.0);
+        if (fi>=5.0) u = 0.83;
+      }
+if (fon==4) {
+              if (fi<0.6) u = 0.32;
+              if (fi>=0.6 && fi<0.8) u = 0.32 + (fi-0.6)*(0.39-0.32)/(0.8-0.6);
+        if (fi>=0.8 && fi<1.0) u = 0.39 + (fi-0.8)*(0.45-0.39)/(1.0-0.8);
+        if (fi>=1.0 && fi<1.25) u = 0.45 + (fi-1.0)*(0.51-0.45)/(1.25-1.0);
+        if (fi>=1.25 && fi<1.5) u = 0.51 + (fi-1.25)*(0.55-0.51)/(1.5-1.25);
+        if (fi>=1.5 && fi<2.0) u = 0.55 + (fi-1.5)*(0.62-0.55)/(2.0-1.5);
+        if (fi>=2.0 && fi<2.5) u = 0.62 + (fi-2.0)*(0.67-0.62)/(2.5-2.0); 
+        if (fi>=2.5 && fi<3.0) u = 0.67 + (fi-2.5)*(0.71-0.67)/(3.0-2.5);
+        if (fi>=3.0 && fi<4.0) u = 0.71 + (fi-3.0)*(0.75-0.71)/(4.0-3.0);
+        if (fi>=4.0 && fi<5.0) u = 0.75 + (fi-4.0)*(0.78-0.75)/(5.0-4.0);
+        if (fi>=5.0) u = 0.78;
+      }
+if (fon==3) {
+              if (fi<0.6) u = 0.3;
+              if (fi>=0.6 && fi<0.8) u = 0.3 + (fi-0.6)*(0.36-0.3)/(0.8-0.6);
+        if (fi>=0.8 && fi<1.0) u = 0.36 + (fi-0.8)*(0.42-0.36)/(1.0-0.8);
+        if (fi>=1.0 && fi<1.25) u = 0.42 + (fi-1.0)*(0.47-0.42)/(1.25-1.0);
+        if (fi>=1.25 && fi<1.5) u = 0.47 + (fi-1.25)*(0.51-0.47)/(1.5-1.25);
+        if (fi>=1.5 && fi<2.0) u = 0.51 + (fi-1.5)*(0.57-0.51)/(2.0-1.5);
+        if (fi>=2.0 && fi<2.5) u = 0.57 + (fi-2.0)*(0.61-0.57)/(2.5-2.0); 
+        if (fi>=2.5 && fi<3.0) u = 0.61 + (fi-2.5)*(0.64-0.61)/(3.0-2.5);
+        if (fi>=3.0 && fi<4.0) u = 0.64 + (fi-3.0)*(0.68-0.64)/(4.0-3.0);
+        if (fi>=4.0 && fi<5.0) u = 0.68 + (fi-4.0)*(0.71-0.68)/(5.0-4.0);
+        if (fi>=5.0) u = 0.71;
+      }
+if (fon==2) {
+              if (fi<0.6) u = 0.24;
+              if (fi>=0.6 && fi<0.8) u = 0.24 + (fi-0.6)*(0.3-0.24)/(0.8-0.6);
+        if (fi>=0.8 && fi<1.0) u = 0.3 + (fi-0.8)*(0.35-0.3)/(1.0-0.8);
+        if (fi>=1.0 && fi<1.25) u = 0.35 + (fi-1.0)*(0.41-0.35)/(1.25-1.0);
+        if (fi>=1.25 && fi<1.5) u = 0.41 + (fi-1.25)*(0.45-0.41)/(1.5-1.25);
+        if (fi>=1.5 && fi<2.0) u = 0.45 + (fi-1.5)*(0.52-0.45)/(2.0-1.5);
+        if (fi>=2.0 && fi<2.5) u = 0.52 + (fi-2.0)*(0.56-0.52)/(2.5-2.0); 
+        if (fi>=2.5 && fi<3.0) u = 0.56 + (fi-2.5)*(0.6-0.56)/(3.0-2.5);
+        if (fi>=3.0 && fi<4.0) u = 0.6 + (fi-3.0)*(0.64-0.6)/(4.0-3.0);
+        if (fi>=4.0 && fi<5.0) u = 0.64 + (fi-4.0)*(0.68-0.64)/(5.0-4.0);
+        if (fi>=5.0) u = 0.68;
+      }
+if (fon==1) {
+              if (fi<0.6) u = 0.24;
+              if (fi>=0.6 && fi<0.8) u = 0.24 + (fi-0.6)*(0.29-0.24)/(0.8-0.6);
+        if (fi>=0.8 && fi<1.0) u = 0.29 + (fi-0.8)*(0.34-0.29)/(1.0-0.8);
+        if (fi>=1.0 && fi<1.25) u = 0.34 + (fi-1.0)*(0.39-0.34)/(1.25-1.0);
+        if (fi>=1.25 && fi<1.5) u = 0.39 + (fi-1.25)*(0.43-0.39)/(1.5-1.25);
+        if (fi>=1.5 && fi<2.0) u = 0.43 + (fi-1.5)*(0.49-0.43)/(2.0-1.5);
+        if (fi>=2.0 && fi<2.5) u = 0.49 + (fi-2.0)*(0.53-0.49)/(2.5-2.0); 
+        if (fi>=2.5 && fi<3.0) u = 0.53 + (fi-2.5)*(0.56-0.53)/(3.0-2.5);
+        if (fi>=3.0 && fi<4.0) u = 0.56 + (fi-3.0)*(0.6-0.56)/(4.0-3.0);
+        if (fi>=4.0 && fi<5.0) u = 0.6 + (fi-4.0)*(0.62-0.6)/(5.0-4.0);
+        if (fi>=5.0) u = 0.62;
+      }
+kolvo =Math.ceil( S * pom / u / lumen / 0.8);
+
+document.getElementById('otvet').value = '   !       Для освещения данного помещения вам ' + 'понадобится ' + kolvo + ' ламп(-ы).'
+
+}
+
+</script>
+
+
+<div class="box bootstrap" id="box">
+<div class="row">
+<div class="col-sm-7">
+<div class="input-group inputs">
+<span class="input-group-addon">Длина помещения</span>
+<input type="number" class="form-control" id="dlina" value="4.4">
+<span class="input-group-addon">м</span>
+</div>
+<div class="input-group inputs">
+<span class="input-group-addon">Ширина помещения</span>
+<input type="number" class="form-control" id="shirina" value="3.2">
+<span class="input-group-addon">м</span>
+</div>
+<div class="input-group inputs">
+<span class="input-group-addon">Высота помещения H</span>
+<input type="number" class="form-control" id="visotaH" value="2.5">
+<span class="input-group-addon">м</span>
+</div>
+<div class="input-group inputs">
+<span class="input-group-addon">Высота H1</span>
+<input type="number" class="form-control" id="visotaH1" value="0.8">
+<span class="input-group-addon">м</span>
+</div>
+<div class="input-group inputs">
+<span class="input-group-addon">Помещение</span>
+<select id="pom" class="form-control">
+<option value="150">Спальня, кухня</option>
+<option value="200">Детская</option>
+<option value="50">Холл, коридор</option>
+<option value="50">Туалет, душевая, ванная</option>
+<option value="75">Гардероб</option>
+<option value="20">Проход чердака и подвала</option>
+<option value="300">Личный кабинет, библиотека, подсобка, комната с бильярдом</option>
+<option value="100">Баня, бассейн</option>
+<option value="20">_____________________________________________________</option>
+<option value="500">Офисы и другие рабочие комнаты</option>
+<option value="500">Проектные бюро</option>
+<option value="300">Читальные залы</option>
+<option value="400">Помещения с ПК</option>
+<option value="200">Конференц-залы и залы заседаний </option>
+<option value="400"> Лаборатории </option>
+<option value="400"> Аудитории, учебные кабинеты </option>
+<option value="500"> Учебная доска учреждения образования </option>
+<option value="300"> Кабинеты и комнаты преподавателей </option>
+<option value="200">Спортзалы </option>
+<option value="150"> Спальные комнаты детских садов</option>
+<option value="200"> Приемные, раздевалки, игровые, столовые детских садов </option>
+<option value="200"> Выставочные залы </option>
+<option value="400"> Торговые залы продовольственных магазинов </option>
+<option value="300"> Торговые залы прочих магазинов </option>
+<option value="300"> Кабинеты врачей </option>
+<option value="400"> Парикмахерские </option>
+<option value="150"> Вестибюли и гардеробы общественных зданий</option>
+<option value="75"> Вестибюли и гардеробы промышленных зданий</option>
+<option value="100"> Лестничные клетки производственных зданий </option>
+<option value="10">Лестничные клетки жилых зданий </option>
+<option value="400">Операционные залы, кассовые помещения </option>
+<option value="100"> Номера гостиниц </option>
+<option value="75"> Умывальные, уборочные, курительные </option>
+<option value="50"> Душевые </option>
+<option value="75">Коридоры и проходы общественных зданий </option>
+<option value="20"> Коридоры и проходы жилых зданий </option>
+</select>
+</div>
+<div class="input-group inputs">
+<span class="input-group-addon">Общий фон</span>
+<select id="fon" class="form-control">
+<option value="1">Темная поверхность</option>
+<option value="2">Серая поверхность</option>
+<option value="3">Светлая поверхность</option>
+<option value="4">Белая поверхность</option>
+<option value="5">Материалы с высокой отражаемостью </option>
+</select>
+</div>
+<div class="input-group inputs">
+<span class="input-group-addon">Тип лампы</span>
+<select id="tiplamp" onChange="ff1()" class="form-control">
+<option value="1">Лампа накаливания </option>
+<option value="2">Люминесцентная лампа</option>
+<option value="3">Светодиодная лампа</option>
+</select>
+</div>
+<div class="input-group inputs">
+<span class="input-group-addon">Мощность лампы</span>
+<select id="moschnost1" class="form-control">
+<option value="20">20 Вт </option>
+<option value="40">40 Вт</option>
+<option value="60">60 Вт</option>
+<option value="75">75 Вт</option>
+<option value="100">100 Вт</option>
+<option value="150">150 Вт</option>
+<option value="200">200 Вт</option>
+</select>
+<select id="moschnost2" style="display:none" class="form-control">
+<option value="7">5-7 Вт </option>
+<option value="13">10-13 Вт</option>
+<option value="16">15-16 Вт</option>
+<option value="20">18-20 Вт</option>
+<option value="30">25-30 Вт</option>
+<option value="50">40-50 Вт</option>
+<option value="80">60-80 Вт</option>
+</select>
+<select id="moschnost3" style="display:none" class="form-control">
+<option value="3">2-3 Вт </option>
+<option value="5">4-5 Вт</option>
+<option value="10">8-10 Вт</option>
+<option value="12">10-12 Вт</option>
+<option value="15">12-15 Вт</option>
+<option value="20">18-20 Вт</option>
+<option value="30">25-30 Вт</option>
+</select>
+</div>
+</div>
+<div class="col-sm-5">
+<input id="image1" type="image" class="image1" src="raschet-osveschennosti-onlayn.png" />
+<input id="image2" type="image" class="image2" src="lampa-nakalivaniya.png" />
+<input id="image3" type="image" style="display:none" class="image2" src="lyuminescentnaya-lampa.png" />
+<input id="image4" type="image" style="display:none" class="image2" src="svetodiodnaya-lampa.png" />
+</div>
+</div>
+<input type="submit" value="РАСЧЕТ" class="btn btn-success" onClick="r1()" style=" position:relative; left:5px; top:10px;" />
+<output id="otvet"></output>
+</div>
+	<p/><br/>Этот расчет необходим для того, чтобы понять, какие и сколько 
+	лампочек нужно поставить в помещении, чтобы освещенность удовлетворяла 
+	нормам по СНиПу.<br/><p/><b>Порядок работы:</b><br/>1. Задайте 
+	геометрические размеры помещения: длину, ширину и высоту (в этом Вам поможет 
+	картинка)<br/>2. Выберите тип помещения<br/>3. Задайте общий фон помещения 
+	(к примеру, если у вас белый потолок, зеленые обои и серый пол, то выбирайте 
+	«Серая поверхность», если же белый потолок, голубые обои и серый пол, то уже 
+	можно выбрать «Светлая поверхность»)<br/>4. Выберите тип лампы (лампа 
+	накаливания, люминесцентная лампа или светодиодная лампа)<br/>5. Задайте 
+	мощность лампы<br/><p/><b>Для справки:</b><br/>- нормы освещенности согласно 
+	СНиП II-4-79 «Естественное и искусственное освещение»<br/>- светоотдача ламп 
+	накаливания 16 Лм/Вт<br/>- светоотдача люминесцентных ламп 105 Лм/Вт<br/>- 
+	светоотдача светодиодных ламп 210 Лм/Вт<br/>
+
+	
+
+</body>
+</html>
