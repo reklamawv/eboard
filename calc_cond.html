@@ -1,0 +1,181 @@
+
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru-ru" lang="ru-ru" dir="ltr">
+	<head>
+	  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор потери напряжения в кабеле</title>
+	  <script src="https://vk.com/js/api/mobile_sdk.js"  type="text/javascript"></script>
+	  
+	<style type="text/css">
+	body {
+      font: 14px/18px Open Sans; 
+      line-height: 18px;
+      color: #000000; }
+
+	h1, h2, h3, h4, h5, h6 { font-family: Arial, Helvetica, sans-serif; }
+
+	h1 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h2 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h3 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h4 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h5 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	h6 {
+        font-size: px;
+        line-height: px;
+        color: #48555c;}
+
+	.ot-menu a {
+		
+		
+	}
+	.ot-menu a:hover {
+		
+	}
+
+.form-horizontal .control-label{width:250px; !important; }
+	.auto-style20 {
+	background-color: #FF0000;
+}
+.auto-style21 {
+	background-color: #FFFF00;
+}
+
+ 
+.auto-style1 {
+	text-align: left;
+}
+.auto-style2 {
+	text-align: right;
+}
+.auto-style3 {
+	text-align: center;
+	font-weight: bold;
+	color: #ff0000;
+	font-size: x-large;
+}
+ 
+	</style>
+	
+<body style="background: rgb(234,255,215); background: linear-gradient(90deg, rgba(244,255,235,1) 0%, rgba(239,255,252,1) 52%, rgba(206,248,255,1) 100%);">
+<script language="javascript">
+            VK.init({
+              apiId: 51858291
+            });
+            </script>
+			
+ 
+
+<script type="text/javascript" language="javascript">
+
+ function r1() {
+          dlina = document.getElementById("dlina").value;
+          shirina = document.getElementById("shirina").value;
+          visota = document.getElementById("visota").value;
+          osveschennost = document.getElementById("osveschennost").value;
+          kolvoludey = document.getElementById("kolvoludey").value;
+          kolvokompov = document.getElementById("kolvokompov").value;
+          kolvotelikov = document.getElementById("kolvotelikov").value;
+
+
+          power = (dlina * shirina * visota * osveschennost/1000) + (kolvoludey * 0.13) + (kolvokompov * 0.3) + (kolvotelikov * 0.2);
+      power2 = power*1.2;
+      power=power.toFixed(2);
+      power2=power2.toFixed(2);
+
+      document.getElementById("otvet").value = 'Расчетная мощность ' + power + ' кВт.' ;
+            document.getElementById("otvet2").value = 'Вам понадобится кондиционер мощностью ' + power2 + ' кВт';
+
+    }
+
+
+
+
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"></head>
+<body>
+<h1>Расчет мощности кондиционера</h1>
+<div class="wrapper_kondicioner bootstrap">
+<div class="input-group inputs">
+<span class="input-group-addon">Длина комнаты:</span>
+<input type="number" class="form-control" id="dlina" value="4.2">
+<span class="input-group-addon">м</span>
+</div>
+<div class="input-group inputs">
+<span class="input-group-addon">Ширина комнаты:</span>
+<input type="number" class="form-control" id="shirina" value="3.4">
+<span class="input-group-addon">м</span>
+</div>
+<div class="input-group inputs">
+<span class="input-group-addon">Высота комнаты:</span>
+<input type="number" class="form-control" id="visota" value="3.0">
+<span class="input-group-addon">м</span>
+</div>
+<div class="input-group inputs">
+<span class="input-group-addon">Компьютеров в комнате:</span>
+<input type="number" class="form-control" id="kolvokompov" value="1">
+<span class="input-group-addon">шт</span>
+</div>
+<div class="input-group inputs">
+<span class="input-group-addon">Телевизоров в комнате:</span>
+<input type="number" class="form-control" id="kolvotelikov" value="1">
+<span class="input-group-addon">шт</span>
+</div>
+<div class="input-group inputs">
+<span class="input-group-addon">Людей в комнате:</span>
+<input type="number" class="form-control" id="kolvoludey" value="2">
+<span class="input-group-addon">шт</span>
+</div>
+<div class="input-group inputs">
+<span class="input-group-addon">Освещенность помещения:</span>
+<select id="osveschennost" class="form-control">
+<option value="30">Солнце практически не попадает в окна</option>
+<option value="35">Средняя освещенность</option>
+<option value="40">Солнце очень часто светит в окна</option>
+</select>
+</div>
+&nbsp;<input type="submit" class="btn btn-success" value="Расчет" onClick="r1()" />
+<output id="otvet"></output>
+<output id="otvet2"></output>
+</div>
+</body>
+</html>
+<br/><p/>При покупке кондиционера домой Вы наверняка задумывались о вопросе 
+	какой же мощности его взять. Достаточно будет такой или же взять больше? 
+	Чтобы больше это Вас не тревожило, был написан <b>калькулятор расчета 
+	мощности кондиционера</b>, на котором с легкостью можно ее рассчитать, тем 
+	самым подобрав оптимальный кондиционер для вашего помещения.<br/><p/><i>
+	Порядок работы:</i><br/>1. Задать длину/ширину/высоту помещения<br/>2. 
+	Задать количество компьютеров в помещении<br/>3. Задать количество 
+	телевизоров в помещении<br/>4. Задать количество людей, которые будут больше 
+	всего времени здесь находится<br/>5. Выбрать степень освещенности помещения<br/><p/><i>
+	Для справки:</i><br/><p/>- После того, как калькулятор подсчитал расчетную 
+	мощность кондиционера, он ее умножает на 20% и получает итоговую мощность, 
+	не ниже которой нужно искать себе кондиционер. Делается это для того, чтобы 
+	Ваш кондиционер не работал постоянно на пределах своих возможностей, тем 
+	самым проработав долгое время.<br/>
+
+	
+
+</body>
+</html>
